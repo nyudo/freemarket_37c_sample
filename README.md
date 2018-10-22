@@ -1,6 +1,6 @@
 # README
 
-##users テーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -18,16 +18,17 @@
 |residential_name|string|-------|
 |phone_number|integer|null:false|
 |postal_code|integer|null:false|
-|profile|text|-------||
+|profile|text|-------|
 
 ### Association
--has_many :items, dependent: :destroy
--has_many :buyed_items, foreign_key:"buyer_id",class_name:"Item"
--has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
--has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
+- has_many :items, dependent: :destroy
+- has_many :buyed_items, foreign_key:"buyer_id",class_name:"Item"
+- has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
+- has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 
 
-##itemsテーブル
+## itemsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |item_name|string|null:false,add_index,validates :items_name, length: { maximum: 40 }|
@@ -51,6 +52,6 @@
 |buyer_id|integer|add_index,foreign_key:true|
 
 ### Association
--belongs_to :user
--belongs_to :saler, class_name:"User"
--belongs_to :buyer, class_name:"User"
+- belongs_to :user
+- belongs_to :saler, class_name:"User"
+- belongs_to :buyer, class_name:"User"
