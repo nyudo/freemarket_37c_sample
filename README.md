@@ -2,23 +2,32 @@
 
 ## usersテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|nickname|string|null:false,add_index|
-|family_name|string|null:false|
-|first_name|string|null:false|
-|kana_family_name|string|null:false|
-|kana_first_name|string|null:false|
-|email_address|string|uniqueness:true,null:false|
-|password|string|null:false|
-|birthday|date|null:false|
-|prefecture_id|integer|null:false, foreign_key: true|
-|city|string|null:false|
-|address|string|null:false|
-|residential_name|string|-------|
-|phone_number|integer|null:false|
-|postal_code|integer|null:false|
-|profile|text|-------|
+|Column|Type|Options|Remarks|
+|------|----|-------|-------|
+|nickname|string|null:false,add_index|-------|
+|family_name|string|null:false|-------|
+|first_name|string|null:false|-------|
+|kana_family_name|string|null:false|-------|
+|kana_first_name|string|null:false|-------|
+|email_address|string|uniqueness:true,null:false|-------|
+|password|string|null:false|-------|
+|birthday|date|null:false|-------|
+|prefecture|integer|null:false, foreign_key: true|enum prefectures: {
+    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
+    茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
+    新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
+    岐阜県:21,静岡県:22,愛知県:23,三重県:24,
+    滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
+    鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
+    徳島県:36,香川県:37,愛媛県:38,高知県:39,
+    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
+  }|-------|
+|city|string|null:false|-------|
+|address|string|null:false|-------|
+|residential_name|string|-------|-------|
+|phone_number|integer|null:false|-------|
+|postal_code|integer|null:false|-------|
+|profile|text|-------|-------|
 
 ### Association
 - has_many :items, dependent: :destroy
@@ -42,23 +51,32 @@ belongs_to :item
 
 ## itemsテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|item_name|string|null:false,add_index,validates :items_name, length: { maximum: 40 }|
-|description|string|null:false,validates :description, length: { maximum: 1000 }|
-|size|string|-------|
-|condition|string|null:false|
-|charge_method|string|null:false|
-|prefecture_id|integer|null:false, foreign_key: true|
-|handling_time|string|null:false|
-|price|integer|null:false,validates :price,:greater_than => 299,:less_than => 10000000|
-|user_id|string|null: false, foreign_key: true, add_index|
-|saler_id|integer|add_index,foreign_key:true|
-|buyer_id|integer|add_index,foreign_key:true|
-|Large_category_id|integer|null:false, foreign_key: true|
-|medium_category_id|integer|null:false, foreign_key: true|
-|small_category_id|integer|null:false, foreign_key: true|
-|bland_id|integer|add_index,foreign_key:true|
+|Column|Type|Options|Remarks|
+|------|----|-------|-------|
+|item_name|string|null:false,add_index,validates :items_name, length: { maximum: 40 }|-------|
+|description|string|null:false,validates :description, length: { maximum: 1000 }|-------|
+|size|string|-------|-------|
+|condition|string|null:false|-------|
+|charge_method|string|null:false|-------|
+|prefecture|integer|null:false, foreign_key: true|enum prefectures: {
+    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
+    茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
+    新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
+    岐阜県:21,静岡県:22,愛知県:23,三重県:24,
+    滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
+    鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
+    徳島県:36,香川県:37,愛媛県:38,高知県:39,
+    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
+  }|-------|
+|handling_time|string|null:false|-------|
+|price|integer|null:false,validates :price,:greater_than => 299,:less_than => 10000000|-------|
+|user_id|string|null: false, foreign_key: true, add_index|-------|
+|saler_id|integer|add_index,foreign_key:true|-------|
+|buyer_id|integer|add_index,foreign_key:true|-------|
+|Large_category_id|integer|null:false, foreign_key: true|-------|
+|medium_category_id|integer|null:false, foreign_key: true|-------|
+|small_category_id|integer|null:false, foreign_key: true|-------|
+|bland_id|integer|add_index,foreign_key:true|-------|
 
 ### Association
 - belongs_to :user
@@ -72,6 +90,8 @@ belongs_to :item
 - has_many :likes,dependent: :destroy
 - has_many :todos, dependent: :destroy
 - has_many :images, dependent: :destroy
+
+
 
 ## large_categoriesテーブル
 
@@ -108,15 +128,6 @@ belongs_to :item
 |bland|text|add_index|
 
 ### Association
-- has_many :items
-
-## prefecturesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|text|add_index|
-### Association
-- has_many :users
 - has_many :items
 
 ##likes テーブル
