@@ -26,6 +26,10 @@
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 - belongs_to :area
+- has_many :likes,dependent: :desrtroy
+- has_many :evaluations
+- has_many :todos, dependent: :destroy
+- has_many :points, dependent: :destroy
 
 ## itemsテーブル
 
@@ -56,6 +60,8 @@
 - belongs_to :category
 - belongs_to :bland
 - belongs_to :area
+- has_many :likes,dependent: :destroy
+- has_many :todos, dependent: :destroy
 
 ## categoriesテーブル
 
@@ -84,3 +90,47 @@
 ### Association
 - has_many :users
 - has_many :items
+
+##likes テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false, foreign_key: true, add_index|
+|item_id|string|null: false, foreign_key: true, add_index|
+
+### Association
+-belongs_to :item
+-belongs_to :user
+
+##evaluations テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|evaluate_user_id|references|null: false, foreign_key: true|
+|good|string|-------|
+|medium|string|-------|
+|bad|string|-------|
+
+### Association
+-belongs_to :user
+-belongs_to :evaluate_user, class_name:"User", foreign_key: :evaluate_user_id
+
+##todos テーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|string|null:false|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+-belongs_to :item
+-belongs_to :user
+
+##points テーブル
+|Column|Type|Options|
+|------|----|-------|
+|points|integer|null:false|
+|limit|date|-------|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+-belongs_to :user
