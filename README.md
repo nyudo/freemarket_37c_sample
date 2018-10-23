@@ -53,6 +53,8 @@
 - belongs_to :user
 - belongs_to :saler, class_name:"User"
 - belongs_to :buyer, class_name:"User"
+- belongs_to :category
+- belongs_to :bland
 - belongs_to :area
 
 ## categoriesテーブル
