@@ -81,7 +81,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |area|text|add_index|
-
 ### Association
-- has_one :user
-- has_one :item
+- has_many :users
+- has_many :items
