@@ -34,7 +34,6 @@
 - has_many :bought_items, foreign_key:"buyer_id",class_name:"Item"
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
-- belongs_to :prefecture
 - has_many :likes,dependent: :desrtroy
 - has_many :evaluations
 - has_many :todos, dependent: :destroy
@@ -86,7 +85,6 @@ belongs_to :item
 - belongs_to :medium_category
 - belongs_to :small_category
 - belongs_to :bland
-- belongs_to :prefecture
 - has_many :likes,dependent: :destroy
 - has_many :todos, dependent: :destroy
 - has_many :images, dependent: :destroy
