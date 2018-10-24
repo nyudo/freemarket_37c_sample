@@ -21,7 +21,7 @@
     鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
-  }|-------|
+  }|
 |city|string|null:false|-------|
 |address|string|null:false|-------|
 |residential_name|string|-------|-------|
@@ -66,7 +66,7 @@ belongs_to :item
     鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
-  }|-------|
+  }|
 |handling_time|string|null:false|-------|
 |price|integer|null:false,validates :price,:greater_than => 299,:less_than => 10000000|-------|
 |user_id|string|null: false, foreign_key: true, add_index|-------|
