@@ -2,7 +2,7 @@ server '54.238.162.247', user: 'ec2-user', roles: %w{app db web}
 
 set :ssh_options, {
   port: 22,
-  keys: [File.expand_path('~/.ssh/id_rsa')],
+  keys: [File.expand_path('~/.ssh/37c_free_mercari.pem')],
   forward_agent: true,
   auth_methods: %w(publickey)
 }
