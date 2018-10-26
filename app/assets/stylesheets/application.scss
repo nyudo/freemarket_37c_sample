@@ -1,3 +1,4 @@
+@import "./reset";
 @import "font-awesome";
 @import "mixin/top";
 @import "modules/header";
@@ -5,7 +6,6 @@
 @import "./_main";
 @import "./_item_info";
 @import "modules/footer";
-@import "./reset";
 @import "./sidebar";
 @import "./users";
 @import "./footer_sell_btn";
