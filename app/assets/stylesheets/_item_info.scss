@@ -1,0 +1,98 @@
+.font-2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.pickup-container{
+  @include tab () {
+    padding: 40px 0;
+  }
+  .pickup-head {
+    font-size: 28px;
+    text-align: center;
+  }
+  .item-box-container{
+      font-size: 22px;
+      width: 700px;
+      margin: 0 auto;
+      @include pc() {
+        width: 940px;
+      }
+    .sub-title{
+      font-size: 22px;
+      margin: 26px 11px;
+      text-align: center;
+      color: #0099e8;
+    }
+   }
+    .items-box-content{
+      @include tab() {
+        width: auto;
+        }
+        .item-box{
+          background-color: #fff;
+          float: left;
+          @include tab() {
+          margin-left: 20px;
+          width: 213px;
+        }
+          &__photo{
+            overflow: hidden;
+            width: auto;
+            @include tab() {
+              height: 220px;
+            }
+              .item-box-image{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+              }
+          }
+          &__text{
+            padding: 16px;
+            height: 110px;
+            &__name{
+              overflow: hidden;
+              position: relative;
+              height: 3em;
+              line-height: 1.5;
+              word-break: break-word;
+              white-space: normal;
+            }
+          &__num{
+            margin-top: 8px;
+            &__price{
+              font-size: 16px;
+              float: left;
+              font-weight: 600;
+              @include pc () {
+                font-size: 20px;
+              }
+            }
+            &__likes{
+              float: right;
+              .heart-icon{
+                color: #CCCCCC;
+                margin-right: 4px;
+
+              }
+            }
+            &__tax{
+              font-size: 10px;
+              clear: both;
+            }
+          }
+       }
+    }
+  }
+}
+
+ .view-all{
+    text-align: right;
+    font-size: 14px;
+    color: #0099e8;
+    width: 99%;
+    @include tab() {
+      padding: 20px 0 30px;
+    }
+  }
