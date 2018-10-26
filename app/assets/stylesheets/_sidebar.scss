@@ -1,0 +1,35 @@
+.l-side {
+    float: left;
+    width: 280px;
+    margin: 40px 40px 0 0;
+    box-sizing: border-box;
+    .clearfix::after{
+      clear:both;
+      content: "";
+      display:block;
+    }
+}
+.mypage-nav{
+  &__head {
+    margin: 40px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__list--item{
+    max-height: 48px;
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+    color: #333;
+    background-color: white;
+    margin-bottom: 2px;
+    box-sizing:border-box;
+      i.fas.fa-angle-right{
+        float: right;
+        color: rgb(200, 200, 200);
+      }
+  }
+}
+@media screen and (max-width: 1020px) {
+  .l-side{ width: 100%; }
+}
