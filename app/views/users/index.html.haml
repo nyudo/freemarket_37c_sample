@@ -1,82 +1,85 @@
-%main.l-container.clearfix
-  %section.user-icon
-    %a
-      %figure
-        %img{alt: "顔写真1", height: "60", src: "/assets/member_photo_noimage_thumb.png", width: "60"}/
-      %h2.bold お名前
-      .user-number
-        %div
-          評価
-          %span.bold 0
-        %div
-          出品数
-          %span.bold 0
-  %section.notification-todo
-    %ul.notification-todo__tabs
-      %li.active
-        %h3
-          %a
-            お知らせ
-      %li
-        %h3
-          %a
-            やることリスト
-    %ul.notification__content
-      %li
-        %a.notification-todo__content-link
-          %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
-          .notification-todo__content-link--text
-            個別メッセージ
-          %time
-            %i.far.fa-clock.my-gray
-            %span 1 日前
-            %i.fas.fa-angle-right.fa-lg
-      %li
-        %a.notification-todo__content-link
-          %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
-          .notification-todo__content-link--text
-            個別メッセージ
-          %time
-            %i.far.fa-clock.my-gray
-            %span 2 日前
-            %i.fas.fa-angle-right.fa-lg
-      %li
-        %a.notification-todo__content-link
-          %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
-          .notification-todo__content-link--text
-            個別メッセージ
-          %time
-            %i.far.fa-clock.my-gray
-            %span 3 日前
-            %i.fas.fa-angle-right.fa-lg
-      %li
-        %a.notification-todo__content-link
-          %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
-          .notification-todo__content-link--text
-            個別メッセージ
-          %time
-            %i.far.fa-clock.my-gray
-            %span 4 日前
-            %i.fas.fa-angle-right.fa-lg
-      %li.mypage-go-list
-        %a 一覧を見る
-    / %ul.todo__content
-    /   %li
-    /     現在やることはありません
-  %section.history-container
-    %h2.history-container__head
-      購入した商品
-    %ul.history-container__tabs
-      %li.active
-        %h3
-          %a
-            取引中
-      %li
-        %h3
-          %a
-            過去の取引
-    .history-container__content
-      %img{alt: "箱", height: "60", src: "/assets/logo-gray-icon.svg", width: "60"}/
-      取引中の商品がありません
-= render partial: 'sidebar'
-= render partial: 'footer_sell_btn'
+= render partial: 'items/header'
+.mypage-container.clearfix
+  %main.l-container
+    %section.user-icon
+      %a
+        %figure
+          %img{alt: "顔写真1", height: "60", src: "/assets/member_photo_noimage_thumb.png", width: "60"}/
+        %h2.bold お名前
+        .user-number
+          %div
+            評価
+            %span.bold 0
+          %div
+            出品数
+            %span.bold 0
+    %section.notification-todo
+      %ul.notification-todo__tabs
+        %li.active
+          %h3
+            %a
+              お知らせ
+        %li
+          %h3
+            %a
+              やることリスト
+      %ul.notification__content
+        %li
+          %a.notification-todo__content-link
+            %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
+            .notification-todo__content-link--text
+              個別メッセージ
+            %time
+              %i.far.fa-clock.my-gray
+              %span 1 日前
+              %i.fas.fa-angle-right.fa-lg
+        %li
+          %a.notification-todo__content-link
+            %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
+            .notification-todo__content-link--text
+              個別メッセージ
+            %time
+              %i.far.fa-clock.my-gray
+              %span 2 日前
+              %i.fas.fa-angle-right.fa-lg
+        %li
+          %a.notification-todo__content-link
+            %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
+            .notification-todo__content-link--text
+              個別メッセージ
+            %time
+              %i.far.fa-clock.my-gray
+              %span 3 日前
+              %i.fas.fa-angle-right.fa-lg
+        %li
+          %a.notification-todo__content-link
+            %img.clearfix{height: "48", src: "/assets/mercari_profile.png", width: "48"}/
+            .notification-todo__content-link--text
+              個別メッセージ
+            %time
+              %i.far.fa-clock.my-gray
+              %span 4 日前
+              %i.fas.fa-angle-right.fa-lg
+        %li.mypage-go-list
+          %a 一覧を見る
+      / %ul.todo__content
+      /   %li
+      /     現在やることはありません
+    %section.history-container
+      %h2.history-container__head
+        購入した商品
+      %ul.history-container__tabs
+        %li.active
+          %h3
+            %a
+              取引中
+        %li
+          %h3
+            %a
+              過去の取引
+      .history-container__content
+        %img{alt: "箱", height: "60", src: "/assets/logo-gray-icon.svg", width: "60"}/
+        取引中の商品がありません
+  = render partial: 'sidebar'
+  = render partial: 'footer_sell_btn'
+= render partial: 'items/footer'

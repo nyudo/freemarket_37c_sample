@@ -1,15 +1,20 @@
-html{
-  box-sizing: border-box;
-  background-color: rgb(245, 245, 245);
-  margin: 0 auto;
-  max-width:1020px;
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  font-size: 14px;
-  color: #333;
-  line-height: 1;
+// html{
+//   box-sizing: border-box;
+//   background-color: rgb(245, 245, 245);
+//   margin: 0 auto;
+//   max-width:1020px;
+//   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+//   font-size: 14px;
+//   color: #333;
+//   line-height: 1;
+// }
+.mypage-container{
+    margin: 40px auto 0 ;
+  @include pc() {
+    width : 1020px;
+  }
 }
 .l-container{
-  margin: 40px auto 0 ;
   float: right;
   width:700px;
   box-sizing:border-box;
