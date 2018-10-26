@@ -19,6 +19,7 @@
 |phone_number|integer|null:false|
 |postal_code|integer|null:false|
 |profile|text|-------|
+|user_image|string|-----|
 
 ### Association
 - has_many :items, dependent: :destroy
