@@ -139,3 +139,5 @@ belongs_to :item
 - belongs_to :user
 - belongs_to :evaluated_user, class_name:"User", foreign_key: :evaluated_user_id
 
+[ER図](https://gyazo.com/2d1361dbadd9f7db096033916ddd57ad)
+
