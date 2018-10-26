@@ -1,0 +1,108 @@
+.app-banner{
+  @include tab() {
+  background: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?52408201");
+  background-size: center;
+ }
+  &__contents{
+    overflow: hidden;
+    position: relative;
+    width: 750px;
+    height: 260px;
+    margin: 0 auto;
+    color: #fff;
+    @include tab() {
+    display: block;
+  }
+    &__inner{
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      h2, p{
+        text-shadow: 5px 0 5px violet;
+      }
+      h2{
+        font-size: 16px;
+      }
+      p{
+        margin-top: 10px;
+        font-size: 24px;
+      }
+      .app-banner-icon{
+        margin-top: 20px;
+        figure{
+          float: left;
+          .mercari-logo{
+            vertical-align: middle;
+          }
+        }
+        ul{
+          float: left;
+          margin-left: 24px;
+          li{
+          display: inline-block;
+          margin-top: 15px;
+            }
+          }
+        }
+      }
+      .mobile-image{
+          width: 300px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+        .app-image{
+          height: 100%;
+          }
+       }
+    }
+  }
+
+.global-footer{
+  background-color: #212121;
+  color: #fff;
+  @include tab() {
+  padding: 60px 0;
+  text-align: center;
+  }
+  nav{
+    width: $tab;
+    margin: 0 auto;
+    @include pc() {
+      width: 1020px;
+    }
+    text-align: center;
+    .footer-cell{
+      @include tab() {
+        display: inline-block;
+        width: 23%;
+        vertical-align: top;
+        h2{
+          font-size: 16px;
+          line-height: 1.4;
+        }
+        li:first-child{
+          margin-top: 24px;
+        }
+        li {
+          margin-top: 16px;
+          font-size: 13px;
+          .nav-lang{
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer-logo{
+  display: block;
+  margin-top: 40px;
+}
+
+.footer-copyright{
+  margin-top: 8px;
+}
