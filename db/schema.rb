@@ -10,7 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026071103) do
+ActiveRecord::Schema.define(version: 20181026120820) do
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "image"
+    t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "item_name", null: false
+    t.string "description", null: false
+    t.string "size"
+    t.string "condition", null: false
+    t.string "charge_method", null: false
+    t.integer "prefecture", null: false
+    t.string "handling_time", null: false
+    t.integer "price", null: false
+    t.integer "user_id", null: false
+    t.integer "saler_id"
+    t.integer "buyer_id"
+    t.integer "large_category_id", null: false
+    t.integer "medium_category_id", null: false
+    t.integer "small_category_id", null: false
+    t.integer "bland_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "saler_id", "buyer_id", "bland_id"], name: "index_items_on_user_id_and_saler_id_and_buyer_id_and_bland_id"
+  end
+
+  create_table "large_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "large_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medium_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "medium_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "small_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "small_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nickname", null: false

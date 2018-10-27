@@ -1,0 +1,26 @@
+/ =form_for @image do |f|
+/   =f.label :image, "商品画像"
+/   =f.file_field :image
+
+=form_for @item do |f|
+  =f.label :item_name, "商品名"
+  =f.text_field :item_name
+
+  =f.label :description, "商品の説明"
+  =f.text_field :description
+  商品の詳細
+  =f.label :category, "カテゴリー"
+  =f.text_field :large_category_id
+  =f.text_field :medium_category_id
+  =f.text_field :small_category_id
+  =f.label :condition, "商品の状態"
+  =f.text_field :condition
+  配送について
+  =f.label :charge_method,"配送料の負担"
+  =f.text_field :charge_method
+  =f.label :prefecture,"発送元の地域"
+  =f.select :prefecture,Item.prefectures.keys.to_a,{prompt: '---'}
+  =f.label :handling_time,"発送までの日数"
+  =f.text_field :handling_time
+  =f.label :price,"価格"
+  =f.text_field :price
