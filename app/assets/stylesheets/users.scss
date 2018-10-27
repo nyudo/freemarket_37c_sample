@@ -1,15 +1,6 @@
-// html{
-//   box-sizing: border-box;
-//   background-color: rgb(245, 245, 245);
-//   margin: 0 auto;
-//   max-width:1020px;
-//   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-//   font-size: 14px;
-//   color: #333;
-//   line-height: 1;
-// }
 .mypage-container{
     margin: 40px auto 0 ;
+    margin-bottom: 40px;
   @include pc() {
     width : 1020px;
   }
@@ -18,11 +9,6 @@
   float: right;
   width:700px;
   box-sizing:border-box;
-  .clearfix:after{
-      clear:both;
-      content: "";
-      display:block;
-    }
     section.user-icon {
         position: relative;
         height: 155px;
@@ -102,13 +88,7 @@
           line-height: 1.5;
             img{
               float: left;
-              padding-right: 16px;
-              .clearfix::after{
-                clear:both;
-                content:"";
-                display:block;
-              }
-            }
+          }
         }
         i.fas.fa-angle-right{
           float: right;
@@ -196,4 +176,8 @@ span{
 }
 @media screen and (max-width: 1020px) {
   main.l-container{ width: 100%; }
+}
+
+.notification-todo__content-body{
+  margin: 0 40px 0 68px;
 }
