@@ -11,3 +11,15 @@ $tab: 768px;
     @content;
   }
 }
+
+@mixin box-height() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin form() {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
