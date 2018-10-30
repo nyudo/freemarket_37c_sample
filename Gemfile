@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails'
 end
 
 group :production do
@@ -62,6 +63,7 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'devise'
+gem 'seed-fu'
 
 group :development, :test do
   gem 'capistrano'
@@ -70,3 +72,6 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 end
+
+gem "carrierwave"
+gem "mini_magick"
