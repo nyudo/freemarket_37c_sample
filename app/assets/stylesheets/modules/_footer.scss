@@ -14,10 +14,8 @@
     display: block;
   }
     &__inner{
-      position: absolute;
-      top: 50%;
+      @include box-height();
       left: 16px;
-      transform: translateY(-50%);
       h2, p{
         text-shadow: 5px 0 5px violet;
       }
