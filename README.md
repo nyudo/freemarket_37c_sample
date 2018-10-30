@@ -26,10 +26,7 @@
 - has_many :bought_items, foreign_key:"buyer_id",class_name:"Item"
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
-- has_many :likes,dependent: :desrtroy
 - has_many :evaluations
-- has_many :todos, dependent: :destroy
-- has_many :points, dependent: :destroy
 
 ### enum
 - prefectures: {
@@ -71,6 +68,7 @@ belongs_to :item
 |medium_category_id|integer|null:false, foreign_key: true|
 |small_category_id|integer|null:false, foreign_key: true|
 |bland_id|integer|add_index,foreign_key:true|
+|delivery_method|string|null:false|
 
 ### Association
 - belongs_to :user
@@ -80,8 +78,6 @@ belongs_to :item
 - belongs_to :medium_category
 - belongs_to :small_category
 - belongs_to :bland
-- has_many :likes,dependent: :destroy
-- has_many :todos, dependent: :destroy
 - has_many :images, dependent: :destroy
 
 ### enum
@@ -133,16 +129,6 @@ belongs_to :item
 ### Association
 - has_many :items
 
-## likes テーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|string|null: false, foreign_key: true, add_index|
-|item_id|string|null: false, foreign_key: true, add_index|
-
-### Association
-- belongs_to :item
-- belongs_to :user
-
 ## evaluations テーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -154,23 +140,5 @@ belongs_to :item
 - belongs_to :user
 - belongs_to :evaluated_user, class_name:"User", foreign_key: :evaluated_user_id
 
-## todos テーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|string|null:false|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+[ER図](https://gyazo.com/2d1361dbadd9f7db096033916ddd57ad)
 
-### Association
-- belongs_to :item
-- belongs_to :user
-
-## points テーブル
-|Column|Type|Options|
-|------|----|-------|
-|points|integer|null:false|
-|limit|date|-------|
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user

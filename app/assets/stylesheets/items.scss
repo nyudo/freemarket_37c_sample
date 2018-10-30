@@ -14,10 +14,108 @@
 
 body{
   background-color: #f5f5f5;
-
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
   font-size: 14px;
   color: #333;
   line-height: 1;
   min-height: 100%;
+}
+
+.l-left{
+  float: left;
+}
+
+.l-right{
+  float: right;
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.top-main-visual{
+  background: url("https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg");
+  background-size: cover;
+  height: 290px;
+  @include pc () {
+    height: 390px;
+  }
+  .top-contents{
+   margin: 0 auto;
+   height: 100%;
+   max-width: 730px;
+   position: relative;
+   height: 100%;
+   @include pc() {
+    max-width: 860px;
+  }
+    .top-main{
+      @include box-height();
+      left: 0;
+        h2{
+          font-size: 40px;
+          padding-top: 5px;
+          font-weight: bold;
+          text-shadow:
+              1px 1px white,
+              2px 2px yellow,
+              3px 3px orange;
+          @include pc() {
+          font-size: 60px;
+        }
+       }
+        p{
+          font-size: 16px;
+          margin-top: 10px;
+       }
+        .top-main-visual-store{
+          margin-top: 24px;
+          float: left;
+      }
+    }
+    .mobile{
+      position: absolute;
+      right: 0;
+      height: 100%;
+    }
+  }
+}
+
+ .top-main-visual-store > a{
+          margin: 0 0 0 8px;
+          height: 38px;
+          display: inline-block;
+}
+
+ .top-main-visual-store > a:first-child{
+          margin: 0;
+}
+
+.sell-content p{
+  line-height: 1.5;
+}
+
+.btn-default{
+  display:block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-gray{
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+}
+
+.sell-btn-box{
+  .btn-red{
+  margin-top: 40px;
+  }
+  .btn-gray{
+  width: 45%;
+  margin: 24px auto 0;
+ }
 }

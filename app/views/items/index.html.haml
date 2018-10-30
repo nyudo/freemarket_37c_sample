@@ -1,5 +1,6 @@
 .default-container
-  =render "header"
+  =render "items/shared/header"
+  -# =render "shared/header_signup"
   %main{class: "white", role: "main" }
     %section.top-main-visual
       .top-contents
@@ -25,4 +26,5 @@
           =render "items"
         .view-all
           %a  全ての商品を見る
-  =render "footer"
+  = render partial: 'users/footer_sell_btn'
+  =render "items/shared/footer"

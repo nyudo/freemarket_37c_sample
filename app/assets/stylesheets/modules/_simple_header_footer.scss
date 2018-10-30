@@ -1,0 +1,42 @@
+.single-header{
+  text-align: center;
+  @include tab() {
+    height: 128px;
+  }
+  h1{
+    padding-top: 40px;
+    img{
+      vertical-align: middle;
+      @include tab() {
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
+}
+
+.single-footer{
+  text-align: center;
+  padding-top: 40px;
+  @include tab() {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+  }
+    li{
+      display: inline-block;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    li:first-child{
+      margin: 0;
+    }
+
+  .single-footer-logo > img{
+    margin-top: 40px;
+  }
+  p{
+    margin-top: 8px;
+  }
+}
+
