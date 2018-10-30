@@ -68,6 +68,7 @@ belongs_to :item
 |medium_category_id|integer|null:false, foreign_key: true|
 |small_category_id|integer|null:false, foreign_key: true|
 |bland_id|integer|add_index,foreign_key:true|
+|delivery_method|string|null:false|
 
 ### Association
 - belongs_to :user
