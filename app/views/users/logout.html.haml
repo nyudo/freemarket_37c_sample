@@ -1,0 +1,11 @@
+= render partial: 'items/shared/header'
+.mypage-container.clearfix
+  %main.l-container
+    .l-chapter-container
+      .next-submit
+        = link_to user_delete_path do
+          = submit_tag 'edit', class: 'delete'
+            ログアウト
+  = render partial: 'sidebar'
+  = render partial: 'footer_sell_btn'
+= render partial: 'items/shared/footer'
