@@ -14,10 +14,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
         redirect_to "/users"
-        binding.pry
     else
       flash[:notice] = "出品に失敗しました。"
-      binding.pry
       render :index
     end
   end
