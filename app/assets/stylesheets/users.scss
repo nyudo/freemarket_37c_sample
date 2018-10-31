@@ -153,19 +153,15 @@
         }
       }
      }
-    &__content{
-      height: 236px;
-      width: 100%;
-      background-color: white;
-      padding: 60px 0 60px;
+    .mypage-item-not-found{
+      padding: 160px 0 60px;
       text-align: center;
       font-size: 16px;
       color: #ccc;
       box-sizing:border-box;
-      img{
-        display: block;
-        margin: 0 auto 30px;
-      }
+      background: white url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?59913550");
+      background-repeat: no-repeat;
+      background-position: center 40px;
     }
 }
 span{
@@ -180,4 +176,13 @@ span{
 
 .notification-todo__content-body{
   margin: 0 40px 0 68px;
+}
+
+.history-container__content{
+  .mypage-item-list{
+    display:none;
+  }
+  .active{
+    display: block;
+  }
 }
