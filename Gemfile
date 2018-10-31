@@ -77,5 +77,5 @@ gem "carrierwave"
 gem "mini_magick"
 gem 'fog-aws'
 
-
-
+gem 'devise-better_routes'
+gem 'recaptcha', require: 'recaptcha/rails'
