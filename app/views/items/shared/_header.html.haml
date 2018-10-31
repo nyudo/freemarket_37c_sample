@@ -17,10 +17,10 @@
       %nav.menue-right
         %ul.user-menue
           %li.user-menue__list
-            %a.user-menue__list__content
+            =link_to users_path, class: "user-menue__list__content link" do
               %figure
                 %image{src: "//static-mercari-jp-imgtr2.akamaized.net/images/member_photo_noimage_thumb.png", width: "32", class: "user"}
-              .text  マイページ
+              .text マイページ
           %li.user-menue__list
             %a.user-menue__list__content
               %i{class: "far fa-bell bell-icon"}
