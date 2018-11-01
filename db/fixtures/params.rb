@@ -5,13 +5,13 @@ User.seed do |u|
   u.first_name = "name"
   u.kana_family_name = "ニック"
   u.kana_first_name = "ネーム"
-  u.email_address = "nickname@example.com"
+  u.email = "nickname@example.com"
   u.password = "nickname"
   u.birthday = "2018/10/12"
   u.prefecture = 1
   u.city = "渋谷区"
   u.address = 111
-  u.residentill_name = "渋谷ビル"
+  u.residential_name = "渋谷ビル"
   u.phone_number = 909111
   u.postal_code = 3631111
   u.profile = "こんにちは"
@@ -51,13 +51,13 @@ SmallCategory.seed do |s|
 
 end
 
-Bland.seed do |b|
-  b.id =  1
-  b.id = "シャネル"
-end
+# Bland.seed do |b|
+#   b.id =  1
+#   b.id = "シャネル"
+# end
 
-Bland.seed do |b|
-  b.id =  2
-  b.id = "ナイキ"
-end
+# Bland.seed do |b|
+#   b.id =  2
+#   b.id = "ナイキ"
+# end
 
