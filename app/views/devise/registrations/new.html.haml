@@ -1,32 +1,30 @@
-%h2 アカウント作成
-= form_for @user, url: {action: "confirm"} do |f|
-  = devise_error_messages!
-  .field
-    = f.label :ニックネーム
-    %br/
-    = f.text_field :nickname, autofocus: true
-    / = f.hidden_field :nickname, :value => @user.nickname
-  .field
-    = f.label :メールアドレス
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-    / = f.hidden_field :email, :value => @user.email
-  .field
-    = f.label :パスワード
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    / = f.hidden_field :password, :value => @user.password
-  .field
-    = f.label :"パスワード(確認)"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-
-    / = f.hidden_field :password_confirmation, :value => @user.password_confirmation
-
-
-  / .g-recaptcha{"data-sitekey" => "6LcFXHcUAAAAAGVr-YARtUrrrsG8qQhlzxOcGxts"}
-  .actions
-    = f.submit "次へ進む"
-    / =binding.pry
-= render "devise/shared/links"
-= invisible_recaptcha_tags
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .l-single-container
+      .l-single-head
+        %h2 会員情報入力
+      .l-single-inner
+        .l-single-content
+          = form_for @user, url: {action: "confirm"} do |f|
+            = devise_error_messages!
+            .form-group
+              = f.label :ニックネーム
+              = f.label :必須, class: "required"
+              = f.text_field :nickname, class: "input-default", autofocus: true, placeholder: "例）メルカリ太郎"
+            .form-group
+              = f.label :メールアドレス
+              = f.label :必須, class: "required"
+              = f.email_field :email, class: "input-default",placeholder: "PC・携帯どちらでも可"
+            .form-group
+              = f.label :パスワード
+              = f.label :必須, class: "required"
+              = f.password_field :password, class: "input-default",placeholder: "6文字以上"
+            .form-group
+              = f.label :パスワード
+              = f.label :必須, class: "required"
+              = f.password_field :password_confirmation, class: "input-default" , placeholder: "6文字以上"
+            .form-group
+              = f.submit "次へ進む", class: "next-submit"
+  =render "items/shared/simple_footer"
+  = invisible_recaptcha_tags
