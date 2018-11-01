@@ -4,6 +4,7 @@
   background: no-repeat;
   list-style: none;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .clearfix::after{
@@ -31,6 +32,33 @@ body{
 
 .bold{
   font-weight: 600;
+}
+
+.btn-default{
+  display:block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-gray{
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+}
+
+.link:link{
+  color: #333
+}
+
+.link:visited{
+  color: #333
+}
+
+.link:hover{
+  color: #0099e8
 }
 
 .top-main-visual{
@@ -93,21 +121,6 @@ body{
 
 .sell-content p{
   line-height: 1.5;
-}
-
-.btn-default{
-  display:block;
-  width: 100%;
-  line-height: 48px;
-  font-size: 14px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.btn-gray{
-  background-color: #aaa;
-  border: 1px solid #aaa;
-  color: #fff;
 }
 
 .sell-btn-box{

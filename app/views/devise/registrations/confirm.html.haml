@@ -1,0 +1,47 @@
+%p ページ変わってるよ！
+%h2 アカウント作成
+= form_for @userdetail, url: {action: "complete"} do |f|
+  = devise_error_messages!
+  .field
+    = f.label :"お名前"
+    %br/
+    = f.text_field :family_name, autofocus: true, placeholder:"例）山田"
+    = f.text_field :first_name, autofocus: true, placeholder:"例）彩"
+  .field
+    = f.label :"お名前カナ"
+    %br/
+    = f.text_field :kana_family_name, autofocus: true, placeholder:"例）ヤマダ"
+    = f.text_field :kana_first_name, autofocus: true, placeholder:"例）アヤ"
+  .field
+    = f.label :郵便番号
+    = f.text_field :postal_code, placeholder:"例）123-4567"
+  .field
+    = f.label :"都道府県"
+    %br/
+    = f.select :prefecture, User.prefectures.keys,{prompt: '選択してください'}, class: 'btn'
+  %div
+    = f.label :市区町村
+    = f.text_field :address, placeholder:"例）横浜市緑区"
+  %div
+    = f.label :番地
+    = f.text_field :city, placeholder:"青山 1-1-1"
+  %div
+    = f.label :"マンション・アパート名"
+    = f.text_field :residential_name
+  %div
+    = f.label :誕生日
+    = f.text_field :birthday, placeholder:"例）1990年1月23日→19900123"
+  %div
+    = f.label :電話番号
+    = f.text_field :phone_number, placeholder:"例）090-1234-5678"
+  %div
+    = f.label :プロフィール
+    = f.text_field :profile, placeholder:"〇〇文字以内で自己紹介をお願いします"
+  %div
+    = f.label :あなたの写真
+    = f.text_field :user_image
+  / .g-recaptcha{"data-sitekey" => "6LcFXHcUAAAAAGVr-YARtUrrrsG8qQhlzxOcGxts"}
+  .actions
+    = f.submit "次へ進む"
+  = invisible_recaptcha_tags
+= render "devise/shared/links"
