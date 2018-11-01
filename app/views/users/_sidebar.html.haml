@@ -23,23 +23,23 @@
             出品する
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/users/show"}
+          = link_to "/users/show",class: "mypage-nav__list--item" do
             出品した商品 - 出品中
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/jp/mypage/listings/in_progress/"}
+          = link_to "/users/in_progress",class: "mypage-nav__list--item" do
             出品した商品 - 取引中
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/jp/mypage/listings/completed/"}
+          = link_to "/users/completed",class: "mypage-nav__list--item" do
             出品した商品 - 売却済み
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/jp/mypage/purchase/"}
+          = link_to "/users/purchase",class: "mypage-nav__list--item" do
             購入した商品 - 取引中
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/jp/mypage/purchased/"}
+          = link_to "/users/purchased",class: "mypage-nav__list--item" do
             購入した商品 - 過去の取引
             %i.fas.fa-angle-right.fa-lg
         %li
