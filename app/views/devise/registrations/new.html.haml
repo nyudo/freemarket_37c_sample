@@ -25,10 +25,8 @@
 
 
   / .g-recaptcha{"data-sitekey" => "6LcFXHcUAAAAAGVr-YARtUrrrsG8qQhlzxOcGxts"}
-  = invisible_recaptcha_tags
-
-
   .actions
     = f.submit "次へ進む"
     / =binding.pry
 = render "devise/shared/links"
+= invisible_recaptcha_tags
