@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get "users" => "users#index"
+  get "users/in_progress" => "users#in_progress"
+  get "users/completed" => "users#completed"
+  get "users/purchase" => "users#purchase"
+  get "users/purchased" => "users#purchased"
   resources :users, only: [:index, :edit, :update,:show]
   resources :items, only: [:new, :create, :edit, :update]
   post "item/create" => "item/create"
