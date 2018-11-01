@@ -1,47 +1,60 @@
-%p ページ変わってるよ！
-%h2 アカウント作成
-= form_for @userdetail, url: {action: "complete"} do |f|
-  = devise_error_messages!
-  .field
-    = f.label :"お名前"
-    %br/
-    = f.text_field :family_name, autofocus: true, placeholder:"例）山田"
-    = f.text_field :first_name, autofocus: true, placeholder:"例）彩"
-  .field
-    = f.label :"お名前カナ"
-    %br/
-    = f.text_field :kana_family_name, autofocus: true, placeholder:"例）ヤマダ"
-    = f.text_field :kana_first_name, autofocus: true, placeholder:"例）アヤ"
-  .field
-    = f.label :郵便番号
-    = f.text_field :postal_code, placeholder:"例）123-4567"
-  .field
-    = f.label :"都道府県"
-    %br/
-    = f.select :prefecture, User.prefectures.keys,{prompt: '選択してください'}, class: 'btn'
-  %div
-    = f.label :市区町村
-    = f.text_field :address, placeholder:"例）横浜市緑区"
-  %div
-    = f.label :番地
-    = f.text_field :city, placeholder:"青山 1-1-1"
-  %div
-    = f.label :"マンション・アパート名"
-    = f.text_field :residential_name
-  %div
-    = f.label :誕生日
-    = f.text_field :birthday, placeholder:"例）1990年1月23日→19900123"
-  %div
-    = f.label :電話番号
-    = f.text_field :phone_number, placeholder:"例）090-1234-5678"
-  %div
-    = f.label :プロフィール
-    = f.text_field :profile, placeholder:"〇〇文字以内で自己紹介をお願いします"
-  %div
-    = f.label :あなたの写真
-    = f.text_field :user_image
-  / .g-recaptcha{"data-sitekey" => "6LcFXHcUAAAAAGVr-YARtUrrrsG8qQhlzxOcGxts"}
-  .actions
-    = f.submit "次へ進む"
+.single-main
+  =render "items/shared/simple_header"
+  .l-single-container
+    .l-single-head
+      %h2 住所入力
+    .l-single-inner
+      .l-single-content
+        = form_for @userdetail, url: {action: "complete"} do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :お名前
+            = f.label :必須, class: "required"
+            = f.text_field :family_name, class: "input-default", autofocus: true, placeholder: "例）山田"
+            = f.text_field :first_name, class: "input-default", placeholder: "例）彩"
+          .form-group
+            = f.label :お名前カナ
+            = f.label :必須, class: "required"
+            = f.text_field :kana_family_name, class: "input-default", placeholder: "例）ヤマダ"
+            = f.text_field :kana_first_name, class: "input-default", placeholder: "例）アヤ"
+          .form-group
+            = f.label :郵便番号
+            = f.label :必須, class: "required"
+            = f.text_field :postal_code, class: "input-default", placeholder: "例）123-4567"
+          .form-group
+            = f.label :都道府県
+            = f.label :必須, class: "required"
+            = f.select :prefecture, User.prefectures.keys,{prompt: '選択してください'}, class: 'input-default'
+          .form-group
+            = f.label :市区町村
+            = f.label :必須, class: "required"
+            = f.text_field :address, class: "input-default", placeholder: "例）横浜市緑区"
+          .form-group
+            = f.label :番地
+            = f.label :必須, class: "required"
+            = f.text_field :city, class: "input-default", placeholder: "青山 1-1-1"
+          .form-group
+            = f.label :建物名
+            = f.label :任意, class: "any"
+            = f.text_field :residential_name, class: "input-default", placeholder: "例）柳ビル103"
+          .form-group
+            = f.label :誕生日
+            = f.label :必須, class: "required"
+            = f.text_field :birthday, class: "input-default", placeholder: "例）1990年1月23日→19900123"
+          .form-group
+            = f.label :電話番号
+            = f.label :必須, class: "required"
+            = f.text_field :phone_number, class: "input-default", placeholder: "例）090-1234-5678"
+          .form-group
+            = f.label :プロフィール
+            = f.label :任意, class: "any"
+            = f.text_field :phone_number, class: "input-default", placeholder: "100文字以内で自己紹介をお願いします"
+          .form-group
+            = f.label :あなたの写真
+            = f.label :任意, class: "any"
+            = f.text_field :user_image, class: "input-default", placeholder: "選択してください"
+          .form-group
+            = f.submit "次へ進む", class: "next-submit"
   = invisible_recaptcha_tags
-= render "devise/shared/links"
+  =render "items/shared/simple_footer"
+  = render "devise/shared/links"
