@@ -1,11 +1,11 @@
-server '54.238.162.247', user: 'ec2-user', roles: %w{app db web}
+server '52.199.110.74', user: 'ec2-user', roles: %w{app db web}
 
-set :ssh_options, {
-  port: 22,
-  keys: [File.expand_path('~/.ssh/37c_free_mercari.pem')],
-  forward_agent: true,
-  auth_methods: %w(publickey)
-}
+# set :ssh_options, {
+#   port: 22,
+#   keys: [File.expand_path('~/.ssh/kyon_mercari.pem')],
+#   forward_agent: true,
+#   auth_methods: %w(publickey)
+# }
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
