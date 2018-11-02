@@ -117,6 +117,7 @@
       }
     }
   }
+
   .history-container{
     margin-top: 40px;
     &__head{
@@ -153,17 +154,19 @@
         }
       }
      }
-    .mypage-item-not-found{
-      padding: 160px 0 60px;
-      text-align: center;
-      font-size: 16px;
-      color: #ccc;
-      box-sizing:border-box;
-      background: white url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?59913550");
-      background-repeat: no-repeat;
-      background-position: center 40px;
-    }
 }
+
+.mypage-item-not-found{
+    padding: 160px 0 60px;
+    text-align: center;
+    font-size: 16px;
+    color: #ccc;
+    box-sizing:border-box;
+    background: white url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?59913550");
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
 span{
   color: grey;
 }
@@ -185,4 +188,61 @@ span{
   .active{
     display: block;
   }
+}
+
+.mypage-tab-container{
+  background-color: white;
+  .mypage-tab-head{
+    background-color: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    @include tab() {
+      padding: 0 16px;
+      }
+    }
+    .listing-tabs{
+      display: flex;
+      border: 0;
+      background-color: #eee;
+      font-size: 16px;
+      color: #333;
+      font-size: 16px;
+      line-height: 72px;
+      text-align: center;
+      li{
+        width: 33.3%;
+      }
+     .active{
+      background-color: white;
+      border-top: 2px solid #ea352d;
+    }
+  }
+}
+
+.notification__content{
+  li{
+    border-bottom: 1px solid #eee;
+    position: relative;
+    .mypage-item-link{
+      min-height: 80px;
+      padding: 16px;
+      color: #333;
+      display: block;
+      figure{
+        float: left;
+        img{
+          position: absolute;
+        }
+      }
+      .mypage-item-body{
+        margin: 0 40px 0 68px;
+        i.fas.fa-angle-right{
+          position: absolute;
+          right: 16px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
 }
