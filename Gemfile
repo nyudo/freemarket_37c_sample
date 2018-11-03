@@ -84,3 +84,7 @@ gem 'fog-aws'
 gem 'devise-better_routes'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'jquery-turbolinks'
+
+group :test do
+  gem 'faker'
+end
