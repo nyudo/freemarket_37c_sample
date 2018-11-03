@@ -47,7 +47,7 @@
 |user_image|string|-----|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true, dependent: :destroy, foreign_key: "user_id"
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -149,5 +149,5 @@ belongs_to :item
 - belongs_to :user
 - belongs_to :evaluated_user, class_name:"User", foreign_key: :evaluated_user_id
 
-[ER図](https://gyazo.com/be28f62a805307ae9973870d00bff541)
+[ER図](https://gyazo.com/a0f32af9c4a49d1aa0183376ae8f40b3)
 
