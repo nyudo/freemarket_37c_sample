@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: 1)
-    @item = @user.items.find_by(id:6)
+    @item = @user.items.find_by(id:1)
     @item_images = Image.where(item_id: @item.id)
   end
 
@@ -18,6 +18,15 @@ class UsersController < ApplicationController
   end
 
   def purchased
+  end
+
+  def profile
+    # @user_details = UserDetail.find_by(params[:id])
+    # @user = @user_details.user
+
+    @user = User.find(params[:id])
+
+    # @user_details = @user.user_detail
   end
 
 end

@@ -1,4 +1,5 @@
-- @items.each do |item|
+= "#{@small_category_items.first.small_category.small_category}の商品一覧"
+- @small_category_items.each do |item|
   %section.item-box
     =link_to "/items/show/#{item.id}" do
       %figure.item-box__photo
