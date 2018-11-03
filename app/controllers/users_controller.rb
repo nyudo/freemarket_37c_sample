@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   def index
+    @user = User.find_by(id: 1)         #idは仮置きです
   end
 
   def show
-    @user = User.find_by(id: 1)
-    @item = @user.items.find_by(id:1)
+    @user = User.find_by(id: 1)         #idは仮置きです
+    @item = @user.items.find_by(id:1)   #idは仮置きです
     @item_images = Image.where(item_id: @item.id)
   end
 
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   def purchased
   end
 
-  def profile
+  def listing
     # @user_details = UserDetail.find_by(params[:id])
     # @user = @user_details.user
 

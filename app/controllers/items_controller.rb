@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
         redirect_to "/users"
     else
       flash[:notice] = "出品に失敗しました。"
-      render :index
+      redirect_to :root
     end
   end
 
@@ -26,12 +26,12 @@ class ItemsController < ApplicationController
     @images = @item.images.order("created_at DESC")
   end
 
-  def buy
+  def update
     @item = Item.find(params[:id])
     @image = @item.images.first
   end
 
-  def prefecture
+  def area
     @items = Item.where(prefecture: params[:prefecture])
   end
 
