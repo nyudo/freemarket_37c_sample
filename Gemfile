@@ -75,6 +75,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'faker'
 end
 
 gem "carrierwave"
@@ -84,7 +85,3 @@ gem 'fog-aws'
 gem 'devise-better_routes'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'jquery-turbolinks'
-
-group :test do
-  gem 'faker'
-end
