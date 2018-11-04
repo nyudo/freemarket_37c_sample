@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: 1)         #idは仮置きです
-    @item = @user.items.find_by(id: 1)   #idは仮置きです
-    @item_images = Image.where(item_id: 1)#idは仮置きです
+    @item = @user.items.find_by(id:1)   #idは仮置きです
+    @item_images = Image.where(item_id: @item.id)
   end
 
   def in_progress
