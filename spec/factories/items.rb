@@ -1,7 +1,6 @@
  FactoryGirl.define do
 
    factory :item do
-      id                     "1"
       item_name              "良い服"
       description            "良い服です。"
       size                   "M"
