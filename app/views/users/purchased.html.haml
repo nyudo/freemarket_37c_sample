@@ -93,7 +93,7 @@
     %section.user-icon
       %a
         %figure
-          %img{alt: "顔写真1", src: "//static-mercari-jp-imgtr2.akamaized.net/images/member_photo_noimage_thumb.png", width: "60",class: "user-image"}/
+          = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
         .name-form
           %input{type: "text", class: "name-default", name: "meil-address", placeholder: ""}
         .user-number
