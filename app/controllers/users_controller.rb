@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     # @user_details = UserDetail.find_by(params[:id])
     # @user = @user_details.user
 
-    @user = User.find(params[:id])
+    @user = User.find_by(id: 1)#idは仮置きです
 
     # @user_details = @user.user_detail
   end

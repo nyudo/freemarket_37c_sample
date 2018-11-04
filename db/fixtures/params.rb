@@ -1,10 +1,10 @@
-User.seed(:id,
-{id: 1, nickname: "NICK",email: "nickname@example.com",password:"nickname"},
-{id: 2, nickname: "AAAAAA",email: "AAAAAA@example.com",password:"AAAAAA"},
-{id: 3, nickname: "BBBBBB",email: "BBBBBB@example.com",password:"BBBBBB"},
-{id: 4, nickname: "CCCCCC",email: "CCCCCC@example.com",password:"CCCCCC"},
-{id: 5, nickname: "DDDDDD",email: "DDDDDD@example.com",password:"DDDDDD"},
-  )
+5.times {
+  User.seed do |u|
+    u.nickname = Faker::Internet.username(1..6)
+    u.email = Faker::Internet.email
+    u.password = Faker::Internet.password
+  end
+}
 
 UserDetail.seed do |u|
   u.id = 1
@@ -41,6 +41,21 @@ SmallCategory.seed(:id,
   )
 
 
+
+# User.seed(:id,
+# {id: 1, nickname: "NICK",email: "nickname@example.com",password:"nickname"},
+# {id: 2, nickname: "AAAAAA",email: "AAAAAA@example.com",password:"AAAAAA"},
+# {id: 3, nickname: "BBBBBB",email: "BBBBBB@example.com",password:"BBBBBB"},
+# {id: 4, nickname: "CCCCCC",email: "CCCCCC@example.com",password:"CCCCCC"},
+# {id: 5, nickname: "DDDDDD",email: "DDDDDD@example.com",password:"DDDDDD"},
+#   )
+# 5.times do
+#      User.create(
+#         nickname: Faker::DragonBall.character,
+#         email: Faker::Internet.email,
+#         password: Faker::Address.postcode,  #integer
+#       )
+# end
 
 # User.seed do |u|
 #   u.id = 1

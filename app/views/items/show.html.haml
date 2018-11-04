@@ -2,9 +2,9 @@
   %li
     = @item.item_name
   %li
-    = image_tag @item.images.first.image, :size => "300x300"
+    = image_tag @item.images.first.image, size: "300x300"
   -@images.each do |image|
-    = image_tag image.image, :size => "75x75"
+    = image_tag image.image, size: "75x75"
   %li
     =link_to "/users/show/#{@item.user.id}" do
       = @item.user.nickname

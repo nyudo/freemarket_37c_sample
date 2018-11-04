@@ -1,10 +1,10 @@
 = "#{@medium_category_items.first.medium_category.medium_category}の商品一覧"
 - @medium_category_items.each do |item|
   %section.item-box
-    =link_to "/items/show/#{item.id}" do
+    =link_to item_path(item.id) do
       %figure.item-box__photo
         .item-box-image
-          = image_tag item.images.first.image, :size => "213x213"
+          = image_tag item.images.first.image, size: "213x213"
       .item-box__text
         %h3.item-box__text__name.font-2
           = item.item_name
