@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "items/update/:id" => "items#update"
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy]
-  post "item/create" => "item/create"
+  post "items/create" => "items/create"
   resources :category, only: [:index, :show]
   get "category/large_category/:large_category_id" => "category#large_category"
   get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
