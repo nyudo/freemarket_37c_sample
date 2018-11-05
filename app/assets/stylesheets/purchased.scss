@@ -304,11 +304,12 @@
         text-align: center;
       }
     }
-    .user-icon{
+    .profile-icon{
       background:url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?98770078");
-      padding: 60px 200px 0px 0px;
+      padding: 60px 200px;
       .user-image{
         float: left;
+        border-radius: 50%;
       }
       .name-form{
         .name-default{
@@ -319,6 +320,7 @@
           font-size: 16px;
           padding: 5px 10px;
           margin-top: 6px;
+          margin-left: 15px;
         }
       }
     }
@@ -353,3 +355,4 @@
     }
   }
 }
+
