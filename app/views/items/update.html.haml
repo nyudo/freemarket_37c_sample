@@ -1,5 +1,5 @@
 .single-container
-  =render "items/shared/simple_header"
+  = render "items/shared/simple_header"
   %main.single-main
     %section.l-single-container.buy-item-container
       %h2 購入を確定しますか？
@@ -15,7 +15,7 @@
               %span.item-shipping-fee 送料込み
             .buy-point
               ポイントを使う
-              =fa_icon 'angle-down', class: "icon-arrow-right"
+              = fa_icon 'angle-down', class: "icon-arrow-right"
             .buy-price-table
               %ul.buy-you-pay.bold
                 %li.buy-price-cell 支払い金額
@@ -33,7 +33,7 @@
             TECH::EXPERT
           %a.buy-user-info-fix
             %span 変更する
-            =fa_icon 'angle-right', class: "icon-arrow-right"
+            = fa_icon 'angle-right', class: "icon-arrow-right"
       %section.buy-user-info.buy-item
         .buy-content-inner
           %h3.bold 支払い方法
@@ -41,5 +41,5 @@
             クレジット番号
           %a.buy-user-info-fix
             %span 変更する
-            =fa_icon 'angle-right', class: "icon-arrow-right"
-  =render "items/shared/simple_footer"
+            = fa_icon 'angle-right', class: "icon-arrow-right"
+  = render "items/shared/simple_footer"
