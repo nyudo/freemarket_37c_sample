@@ -22,7 +22,8 @@
               = mcategory.medium_category
           %a.s-category
             - @scategory.each do |scategory|
-              %p.name
-                = scategory.small_category
+              %p
+                =link_to category_index_path, class: "name" do
+                  = scategory.small_category
   = render partial: 'users/footer_sell_btn'
 = render partial: 'items/shared/footer'
