@@ -1,3 +1,22 @@
+// スライダーの記載
+.owl-slider{
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  .owlSet{
+      width: 1200px;
+      position:absolute;
+    .owl-stage-outer{
+       // display:block;
+       width:300px;
+       height: 300px;
+       border: 1px solid #f00;
+       float: left;
+    }
+  }
+}
+//アイテム詳細ページ
 .item-single-contents{
   background-color: #fff;
   margin: 40px auto 0;
@@ -17,17 +36,16 @@
         min-width: 300px;
         min-width: 300px;
         min-height: 375px;
-        .owl-stage-outer img{
-           display:block;
-        }
-        .owl-dots{
-          line-height: 0;
+      .owl-dots{
+        line-height: 0;
         .owl-dot{
-          width: 75px;
+          width: auto;
           overflow: hidden;
-          display: inline-block;
           margin:0 -1.5px;
           opacity: 0.4;
+          .owl{
+            margin:0 -1.7px;
+          }
         }
         .active{
           opacity: 1;
@@ -227,12 +245,10 @@
     margin: 0 8px 8px 0;
     vertical-align: middle;
     text-align: center;
-    // background-color: orange;
     .sns-icon{
       width: 44px;
       border-radius: 6px;
       line-height: 44px;
-      // color: pink;
       font-size: 18px;
       }
      .facebook-icon{
@@ -253,7 +269,7 @@
     color: #aa262a;
     font-size: 50px;
     }
-    }
+   }
   }
 }
 
@@ -277,4 +293,82 @@
   }
 }
 
+// 商品購入確定ページ
+.buy-item{
+  padding: 24px 12.5% 0;
+  text-align: center;
+  border-top: 1px solid #f5f5f5;
+  .buy-content{
+    max-width: 320px;
+    margin: 0 auto;
+    .buy-img{
+      width: auto;
+      max-height: 148px;
+    }
+    &__name{
+      @include font();
+      font-size: 16px;
+    }
+    .buy-price{
+      font-size: 28px;
+      @include font();
+      .item-shipping-fee{
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 8px;
+        display: inline-block;
+    }
+   }
+    .buy-point{
+      padding: 16px;
+      border: 1px solid #ccc;
+      margin: 8px;
+   }
+   .buy-price-table{
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    .buy-you-pay{
+      display: table-row;
+      .buy-price-cell{
+        font-size: 28px;
+        display: table-cell;
+        padding: 16px 0;
+        span{
+          text-align: left;
+        }
+      }
+     }
+    }
+    .has-error-text {
+      color: #ea352d;
+      font-size: 14px;
+      @include font();
+    }
+    .btn-default{
+      margin-top: 16px;
+     }
+   }
+}
 
+.buy-user-info{
+  margin-top: 40px;
+  .buy-content-inner{
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: left;
+    .buy-user-info-text{
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .buy-user-info-fix{
+      float: right;
+      color: #0099e8;
+    }
+  }
+}
+
+.buy-item:last-of-type{
+  padding: 40px 12.5%;
+}
