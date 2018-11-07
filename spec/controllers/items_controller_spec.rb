@@ -97,7 +97,7 @@ describe ItemsController do
       patch :update, params: {id: item, item: attributes_for(:item)}
       expect(response).to redirect_to users_listing_path
     end
-    end
-
   end
+
 end
+
