@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+PICTURE_COUNT = 4
+
   def payjp
     require 'payjp'
     Payjp.api_key = PAYJP_SECRET_KEY
@@ -28,7 +30,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.build
+    PICTURE_COUNT.times{@item.images.build}
   end
 
   def create
@@ -58,6 +60,23 @@ class ItemsController < ApplicationController
     @images = @item.images.order("created_at DESC")
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    # @item.images = Image.new if @item.images.blank?
+    # count = @item.images.count
+    # (PICTURE_COUNT - count).times {@item.images.build}
+    # @item.images.cache_key unless @item.images.blank?
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to users_listing_path, notice: "商品を編集しました"
+    else
+      redirect_to edit_item_path
+    end
+  end
+
   def buy
     @item = Item.find(params[:id])
     @image = @item.images.first
@@ -71,10 +90,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image]).merge(user_id: 1) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(user_id: 1) #idは仮置きです。
   end
-
-
 
 end
 
