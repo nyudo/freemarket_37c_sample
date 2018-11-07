@@ -51,7 +51,6 @@ describe ItemsController do
     end
   end
 
-
   describe 'post #payjp'do
 
     it "pay.jp successfully worked" do
@@ -67,4 +66,53 @@ describe ItemsController do
 
   end
 
+  describe 'GET #edit' do
+    it "it successfully gets item info" do
+      item = create(:item)
+      get :show, params: {id: 1}
+      expect(assigns :item).to eq item
+    end
+
+    it 'edit template is shown' do
+      item = create(:item)
+      get :edit, params: { id: 1 }
+      expect(response).to render_template :edit
+    end
+
+    it 'item name is shown' do
+      item = create(:item)
+      get :edit, params: { id: 1 }
+      expect(item[:item_name]).to include ('良い服')
+    end
+
+    it 'item description is shown' do
+      item = create(:item)
+      get :edit, params: { id: 1 }
+      expect(item[:description]).to include ('良い服です。')
+    end
+  end
+
+  describe 'PATCH #update' do
+    it "is successfully updated" do
+      item = create(:item)
+      patch :update, params: {id: item, item: attributes_for(:item)}
+      expect(assigns (:item)).to eq item
+    end
+
+    it "changes item's attributes" do
+      item = create(:item)
+      patch :update, params: {id: item, item: attributes_for(:item, item_name: "服", description: "服です。")}
+      item.reload
+      expect(item.item_name).to eq("服")
+      expect(item.description).to eq("服です。")
+    end
+
+    it "redirects to users_listing_path" do
+      item = create(:item)
+      patch :update, params: {id: item, item: attributes_for(:item)}
+      expect(response).to redirect_to users_listing_path
+    end
+  end
+
 end
+
