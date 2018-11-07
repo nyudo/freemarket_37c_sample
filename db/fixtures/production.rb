@@ -1,8 +1,8 @@
 1.times {
   User.seed do |u|
-    u.nickname = Faker::Internet.username(1..6)
-    u.email = Faker::Internet.email
-    u.password = Faker::Internet.password
+    u.nickname = "NICK"
+    u.email = "aaa@aaaa"
+    u.password = 000000
   end
 }
 
