@@ -1,0 +1,11 @@
+.single-container
+  =render "items/shared/simple_header"
+  = form_for @item do |f|
+    %main.single-main
+      %section.l-single-container
+        = render partial: 'form', locals: {item: @item}
+        .sell-content.sell-btn-box
+          = f.submit "変更する",class: "btn-default btn-red"
+          = link_to 'もどる', :back,class: "btn-default btn-gray"
+  =render "items/shared/simple_footer"
+
