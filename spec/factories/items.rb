@@ -11,6 +11,7 @@
       handling_time          "1~2日で発送"
       price                  "3000"
       delivery_method        "未定"
+      user_id                "1"
       user
       small_category
       medium_category
