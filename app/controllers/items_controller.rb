@@ -1,6 +1,20 @@
 class ItemsController < ApplicationController
 
-  # before_action :move_to_root
+  def payjp
+    require 'payjp'
+
+    Payjp.api_key = PAYJP_SECRET_KEY
+
+    @item = Item.find(params[:id])
+    @user = User.find(1)   #id: 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
+    Payjp::Charge.create(
+      :amount => @item.price,
+      :card => params['payjp-token'],
+      :currency => 'jpy',
+    )
+    @item.update(buyer_id: "#{@user.id}")
+    redirect_to "/users/purchase", notice: '購入が完了しました。'
+  end
 
   def index
     @items = Item.order("updated_at desc")
@@ -48,11 +62,14 @@ class ItemsController < ApplicationController
     @items = Item.where(prefecture: params[:prefecture])
   end
 
+
   private
 
   def item_params
     params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image]).merge(user_id: 1) #idは仮置きです。
   end
+
+
 
 end
 

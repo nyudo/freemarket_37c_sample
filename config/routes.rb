@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   get "users/purchased" => "users#purchased"
   get "users/listing" => "users#listing"
   resources :users, only: [:index, :edit, :update, :show]
-  get "items/update/:id" => "items#update"
+  get "items/:id/update" => "items#update"
   get "items/area/:prefecture" => "items#area"
+  post "items/:id/payjp" => "items#payjp"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show]
   post "items/create" => "items/create"
   resources :category, only: [:index, :show]
