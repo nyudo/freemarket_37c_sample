@@ -21,8 +21,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: 1)#idは仮置きです
   end
 
-  def purchased
-    @user = User.find_by(id: 1)#idは仮置きです
+  def purchase
+    @user = User.find(1) #idは仮置きです.ログイン機能実装したらcurrent_user.idとします。
+    @items = Item.where(buyer_id: @user.id)
   end
 
   def listing
