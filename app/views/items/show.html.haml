@@ -88,7 +88,7 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-  = link_to '購入画面に進む', "/items/#{@item.id}/update", class: "item-buy-btn btn-red bold"
+  = link_to '購入画面に進む', "/items/#{@item.id}/buy", class: "item-buy-btn btn-red bold"
   .item-description
     %p
       = simple_format(@item.description)
@@ -156,4 +156,4 @@
 /     %li
 /       = link_to "この商品を削除する","/items/#{@item.id}",method: :delete, data: {confirm: "本当に削除しますか？"}
 / - else
-/   = link_to '購入画面に進む', "/items/update/#{@item.id}"
+/   = link_to '購入画面に進む', "/items/#{@item.id}/buy"
