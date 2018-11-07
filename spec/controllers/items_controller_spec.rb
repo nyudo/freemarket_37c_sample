@@ -51,6 +51,21 @@ describe ItemsController do
     end
   end
 
+  describe 'post #payjp'do
+
+    it "pay.jp successfully worked" do
+
+      allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_valid_charge)
+      Payjp::Charge.create
+      item = create(:item)
+      expect(item.buyer_id).to eq nil
+      post :payjp,params: { id: item.user_id }
+      expect(assigns(:item)).to eq item
+      expect(assigns(:item).buyer_id).to eq 1
+    end
+
+  end
+
   describe 'GET #edit' do
     it "it successfully gets item info" do
       item = create(:item)
