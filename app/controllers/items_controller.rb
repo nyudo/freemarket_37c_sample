@@ -1,6 +1,26 @@
 class ItemsController < ApplicationController
 
-  # before_action :move_to_root
+  def payjp
+    require 'payjp'
+    Payjp.api_key = PAYJP_SECRET_KEY
+    @item = Item.find(params[:id])
+    @user = User.find(1)   #id: 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
+    @item.with_lock do
+      if @item.buyer_id == nil
+        Payjp::Charge.create(
+          :amount => @item.price,
+          :card => params['payjp-token'],
+          :currency => 'jpy',
+        )
+        @item.update!(buyer_id: @user.id)
+        redirect_to  users_purchase_path
+        flash[:notice] = '購入が完了しました。'
+      else
+        redirect_to :root
+        flash[:notice] = '購入に失敗しました。申し訳ありません。売却済みの商品です。'
+      end
+    end
+  end
 
   def index
     @items = Item.order("updated_at desc")
@@ -30,7 +50,6 @@ class ItemsController < ApplicationController
       images.destroy_all
       redirect_to "/users/listing"
     end
-
   end
 
   def show
@@ -39,7 +58,7 @@ class ItemsController < ApplicationController
     @images = @item.images.order("created_at DESC")
   end
 
-  def update
+  def buy
     @item = Item.find(params[:id])
     @image = @item.images.first
   end
@@ -48,11 +67,14 @@ class ItemsController < ApplicationController
     @items = Item.where(prefecture: params[:prefecture])
   end
 
+
   private
 
   def item_params
     params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image]).merge(user_id: 1) #idは仮置きです。
   end
+
+
 
 end
 
