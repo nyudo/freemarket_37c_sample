@@ -8,44 +8,44 @@ describe Item do
     end
     it "is invalid without a item_name" do
      item = build(:item, item_name: nil)
-     item.valid?
+     expect(item).to be_invalid
     end
     it "is invalid without a description" do
       item = build(:item, description: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without condirion" do
       item = build(:item, condition: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a charge_method" do
       item = build(:item, charge_method: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a prefecuture" do
       item = build(:item, prefecture: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a price" do
       item = build(:item, price: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
 
     it "is invalid without a user_id" do
       item = build(:item, user_id: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a large_category_id" do
       item = build(:item, large_category_id: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a medium_category_id" do
       item = build(:item, medium_category_id: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is invalid without a small_category_id" do
       item = build(:item, small_category_id: nil)
-      item.valid?
+      expect(item).to be_invalid
     end
     it "is valid with price that has less than 10000000 numbers " do
       item = build(:item, price: 9999999)
