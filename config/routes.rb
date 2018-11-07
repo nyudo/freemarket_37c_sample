@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   get "users/purchased" => "users#purchased"
   get "users/listing" => "users#listing"
   resources :users, only: [:index, :edit, :update, :show]
-  get "items/update/:id" => "items#update"
   get "items/area/:prefecture" => "items#area"
-  resources :items, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
+    post :payjp, on: :member
+    get :buy, on: :member
+  end
   post "items/create" => "items/create"
   resources :category, only: [:index, :show]
   get "category/large_category/:large_category_id" => "category#large_category"
