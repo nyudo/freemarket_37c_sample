@@ -118,13 +118,13 @@
                   %label.l-right
                     .price  ¥
                     .price
-                      = f.text_field :price,required: "",class: "input-default",placeholder: "例）300"
+                      = f.text_field :price,required: "",class: "input-default",id:"amount",placeholder: "例）300"
               %li.clearfix
                 .l-left  販売手数料 (10%)
                 .l-right#commission  -
               %li.clearfix.bold
                 .l-left  販売利益
-                .l-right  -
+                .l-right#tax1  -
         .sell-content.sell-btn-box
           .text
             %p  禁止されている出品、行為を必ずご確認ください。
