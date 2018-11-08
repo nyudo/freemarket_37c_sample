@@ -86,3 +86,4 @@ gem 'devise-better_routes'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'jquery-turbolinks'
 gem 'payjp'
+
