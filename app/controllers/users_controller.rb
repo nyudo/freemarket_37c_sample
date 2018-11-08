@@ -11,31 +11,30 @@ class UsersController < ApplicationController
 
   def in_progress
     @user = User.find_by(id: 1)#idは仮置きです
+    @items = @user.items.where.not(buyer_id: nil).where("status IS NULL OR status = ?", 1).order("created_at DESC")
   end
 
   def completed
     @user = User.find_by(id: 1)#idは仮置きです
+    @items = @user.items.where.not(buyer_id: nil).where(status: "2").order("created_at DESC")
   end
 
   def purchase
+    @user = User.find_by(id: 1) #idは仮置きです.ログイン機能実装したらcurrent_user.idとします。
+    @items = Item.where(buyer_id: @user.id).where("status IS NULL OR status = ?", 1).order("created_at DESC")
+
+  end
+
+
+  def purchased
     @user = User.find_by(id: 1)#idは仮置きです
-  end
-
-  def purchase
-    @user = User.find(1) #idは仮置きです.ログイン機能実装したらcurrent_user.idとします。
-    @items = Item.where(buyer_id: @user.id)
+    @items = Item.where(buyer_id: @user.id).where(status: "2").order("created_at DESC")
   end
 
   def listing
 
     @user = User.find_by(id: 1)#idは仮置きです
-    @items = @user.items.order("created_at DESC")
+    @items = @user.items.where(buyer_id: nil).order("created_at DESC")
   end
 
 end
-
-
-
-
-
-

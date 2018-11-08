@@ -25,7 +25,7 @@ PICTURE_COUNT = 4
   end
 
   def index
-    @items = Item.order("updated_at desc")
+    @items = Item.where(saler_id: nil).where(buyer_id: nil).order("created_at desc")
   end
 
   def new
@@ -72,9 +72,24 @@ PICTURE_COUNT = 4
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to users_listing_path, notice: "商品を編集しました"
+      flash[:resume] = "出品の再開をしました。"
     else
       redirect_to edit_item_path
     end
+  end
+
+  def stop
+    @item = Item.find(params[:id])
+    @item.update(saler_id: @item.user.id)
+    redirect_back(fallback_location: root_path)
+    flash[:stop] = "出品の一旦停止をしました。"
+  end
+
+  def resume
+    @item = Item.find(params[:id])
+    @item.update(saler_id: nil)
+    redirect_back(fallback_location: root_path)
+    flash[:resume] = "出品の再開をしました。"
   end
 
   def buy
@@ -94,5 +109,4 @@ PICTURE_COUNT = 4
   end
 
 end
-
 

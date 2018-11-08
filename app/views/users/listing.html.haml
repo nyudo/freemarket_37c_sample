@@ -25,8 +25,12 @@
                         %ul
                           %li
                             = item.item_name
-                          %li
-                            出品中
+                          - if item.saler_id == nil
+                            %li
+                              出品中
+                          - else
+                            %li
+                              公開停止中
         - else
           %ul.mypage-item-list
           %li.mypage-item-not-found.bold 出品中の商品がありません
