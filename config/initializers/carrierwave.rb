@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1' #リージョン確認済み
   }
 
-  config.fog_directory  = 'kyon-mercari' #バケット名確認済み
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kyon-mercari'
+  config.fog_directory  = 's3kyon' #バケット名確認済み
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/s3kyon'
 end
 
