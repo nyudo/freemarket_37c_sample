@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def in_progress
     # @items = @user.items.be_sold.where("status IS NULL OR status = ?", 1).order("created_at DESC")
-    @items = @user.items.be_sold.where("status IS NULL OR status = ?", 1).order("created_at DESC")
+    @items = @user.items.be_sold.where.not(status: 2).order("created_at DESC")
   end
 
   def completed
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def purchase
     # @items = Item.be_bought(@user.id).where("status IS NULL OR status = ?", 1).order("created_at DESC")
-    @items = Item.be_bought(@user.id).where("status IS NULL OR status = ?", 1).order("created_at DESC")
+    @items = Item.be_bought(@user.id).where.not(status: 2).order("created_at DESC")
   end
 
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def listing
-    @items = @user.items.where(buyer_id: nil).order("created_at DESC")
+    @items = @user.items.where(status: 0 || 4 ).order("created_at DESC")
   end
 
   private

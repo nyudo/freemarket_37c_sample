@@ -25,7 +25,7 @@
                         %ul
                           %li
                             = item.item_name
-                          - if item.saler_id == item.user.id
+                          - if item.status == "stopped"
                             %li
                               公開停止中
                           - else

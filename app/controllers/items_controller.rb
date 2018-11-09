@@ -25,8 +25,8 @@ PICTURE_COUNT = 4
   end
 
   def index
-    @items = Item.where(saler_id: nil).where(buyer_id: nil).order("created_at desc")
-    # @items = Item.where("saler_id = ? and buyer_id = ?",'empty?', 'empty?')
+
+    @items = Item.where(status: 0).order("created_at desc")
 
   end
 
@@ -48,10 +48,10 @@ PICTURE_COUNT = 4
 # user_id 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
   def destroy
     if @item.user_id == 1
-      @item.destroy
-      redirect_to "/users/listing"
+       @item.destroy
+       redirect_to "/users/listing"
     else
-      redirect_to item_path(@item.id)
+       redirect_to item_path(@item.id)
     end
   end
 
@@ -77,7 +77,7 @@ PICTURE_COUNT = 4
   end
 
   def stop
-    if @item.update(saler_id: @item.user.id)
+    if @item.update(status: 4)
       redirect_back(fallback_location: root_path)
       flash[:stop] = "出品の一旦停止をしました。"
     else
@@ -87,7 +87,7 @@ PICTURE_COUNT = 4
   end
 
   def resume
-    if @item.update(saler_id: nil)
+    if @item.update(status: 0)
       redirect_back(fallback_location: root_path)
       flash[:resume] = "出品の再開をしました。"
     else
@@ -108,7 +108,7 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(user_id: 1) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: 0).merge(user_id: 1) #idは仮置きです。
   end
 
   def set_item
