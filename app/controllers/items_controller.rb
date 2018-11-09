@@ -26,7 +26,7 @@ PICTURE_COUNT = 4
 
   def index
 
-    @items = Item.where(status: 0).order("created_at desc")
+    @items = Item.where(status: :displayed).order("created_at desc")
 
   end
 
@@ -38,7 +38,7 @@ PICTURE_COUNT = 4
   def create
     @item = Item.new(item_params)
     if @item.save
-        redirect_to "/users/listing"
+        redirect_to users_listing_path
     else
       flash[:notice] = "出品に失敗しました。"
       redirect_to :root
@@ -49,7 +49,7 @@ PICTURE_COUNT = 4
   def destroy
     if @item.user_id == 1
        @item.destroy
-       redirect_to "/users/listing"
+       redirect_to users_listing_path
     else
        redirect_to item_path(@item.id)
     end
@@ -77,7 +77,7 @@ PICTURE_COUNT = 4
   end
 
   def stop
-    if @item.update(status: 4)
+    if @item.update(status: :stopped)
       redirect_back(fallback_location: root_path)
       flash[:stop] = "出品の一旦停止をしました。"
     else
@@ -87,7 +87,7 @@ PICTURE_COUNT = 4
   end
 
   def resume
-    if @item.update(status: 0)
+    if @item.update(status: :displayed)
       redirect_back(fallback_location: root_path)
       flash[:resume] = "出品の再開をしました。"
     else
@@ -108,11 +108,9 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: 0).merge(user_id: 1) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: 1) #idは仮置きです。
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+
 end
 

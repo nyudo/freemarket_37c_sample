@@ -10,28 +10,25 @@ class UsersController < ApplicationController
   end
 
   def in_progress
-    # @items = @user.items.be_sold.where("status IS NULL OR status = ?", 1).order("created_at DESC")
-    @items = @user.items.be_sold.where.not(status: 2).order("created_at DESC")
+    @items = @user.items.be_sold.where.not(status: :received).order("created_at DESC")
   end
 
   def completed
-    # @items = @user.items.be_sold.where(status: "2").order("created_at DESC")
-    @items = @user.items.be_sold.where(status: 2).order("created_at DESC")
+    @items = @user.items.be_sold.where(status: :received).order("created_at DESC")
   end
 
   def purchase
-    # @items = Item.be_bought(@user.id).where("status IS NULL OR status = ?", 1).order("created_at DESC")
-    @items = Item.be_bought(@user.id).where.not(status: 2).order("created_at DESC")
+    @items = Item.be_bought(@user.id).where.not(status: :received).order("created_at DESC")
   end
 
-
   def purchased
-    # @items = Item.be_bought(@user.id).where(status: "2").order("created_at DESC")
-    @items = Item.be_bought(@user.id).where(status: 2).order("created_at DESC")
+    @items = Item.be_bought(@user.id).where(status: :received).order("created_at DESC")
   end
 
   def listing
-    @items = @user.items.where(status: 0 || 4 ).order("created_at DESC")
+    # @items = @user.items.where(status: "displayed" || "stopped" ).order("created_at DESC")
+    # @items = @user.items.where("(status = ?) OR (status = ?)", :displayed, :stopped).order("created_at DESC")
+    @items = @user.items.where(status: :stopped).order("created_at DESC") .or @user.items.where(status: :displayed).order("created_at DESC")
   end
 
   private
