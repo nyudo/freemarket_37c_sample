@@ -1,1 +1,12 @@
-%p 作成完了
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .l-single-container
+      .l-single-head
+        %h2 アカウント作成完了
+      .l-single-inner
+        .l-single-content
+          %a.next-submit{href: "/users/listing"}
+            ユーザーページに進む
+  =render "items/shared/simple_footer"
+  = invisible_recaptcha_tags

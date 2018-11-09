@@ -78,9 +78,9 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
-gem "carrierwave"
-gem "mini_magick"
-gem 'fog-aws'
+gem "carrierwave"  #確認済み
+gem "mini_magick"  #確認済み
+gem 'fog-aws'      #確認済み
 
 gem 'devise-better_routes'
 gem 'recaptcha', require: 'recaptcha/rails'
