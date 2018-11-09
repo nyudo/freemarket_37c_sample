@@ -19,5 +19,5 @@
 .byebug_history
 
 config/secrets.yml
-public/uploads/*
+# public/uploads/*
 # config/initializers/carrierwave.rb
