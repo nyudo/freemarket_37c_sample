@@ -7,7 +7,8 @@ class CategoryController < ApplicationController
   end
 
   def large_category
-    @large_category_items = Item.where(large_category_id: params[:large_category_id])
+    @items = Item.where(large_category_id: params[:large_category_id])
+    @medium_category_items = MediumCategory.select("medium_category")
   end
 
   def medium_category
