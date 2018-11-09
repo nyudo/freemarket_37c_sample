@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-  @user = User.find_by(id: 1)#idは仮置きです。ログイン機能実装したらcurrent_user.idとします。
+    @user = User.find_by(id: 1)#idは仮置きです。ログイン機能実装したらcurrent_user.idとします。
   end
 
 end

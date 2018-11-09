@@ -6,9 +6,7 @@ class Item < ApplicationRecord
   belongs_to :medium_category
   belongs_to :small_category
   belongs_to :bland, optional: true
-  has_many :likes,dependent: :destroy
-  has_many :todos, dependent: :destroy
-  has_many :images, dependent: :destroy
+  has_many :images, dependent: :delete_all
   accepts_nested_attributes_for :images
   validates :item_name, presence: true,length: { maximum: 40 }
   validates :description, length: { maximum: 1000 } ,presence: true

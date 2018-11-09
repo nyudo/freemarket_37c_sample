@@ -26,6 +26,8 @@ PICTURE_COUNT = 4
 
   def index
     @items = Item.where(saler_id: nil).where(buyer_id: nil).order("created_at desc")
+    # @items = Item.where("saler_id = ? and buyer_id = ?",'empty?', 'empty?')
+
   end
 
   def new
@@ -45,10 +47,8 @@ PICTURE_COUNT = 4
 
 # user_id 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
   def destroy
-    @images = @item.images
     if @item.user_id == 1
-      @item.delete
-      @images.destroy_all
+      @item.destroy
       redirect_to "/users/listing"
     else
       redirect_to item_path(@item.id)

@@ -104,7 +104,7 @@
         %li
           = link_to "出品を再開する",resume_item_path(@item.id)
       %li
-        = link_to "この商品を削除する","/items/#{@item.id}",method: :delete, data: {confirm: "本当に削除しますか？"}
+        = link_to "この商品を削除する",item_path(@item.id),method: :delete, data: {confirm: "本当に削除しますか？"}
   - else
     = link_to '購入画面に進む', "/items/#{@item.id}/buy", class: "item-buy-btn btn-red bold"
     .item-description
