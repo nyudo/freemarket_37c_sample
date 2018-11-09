@@ -23,9 +23,7 @@
           %a.s-category
             - @scategory.each do |scategory|
               %p
-                / =link_to category_index_path, class: "name" do
-                /   = scategory.small_category
-                %a.name{:href => "category/small_category/1/1/1"}
+                =link_to "category/small_category/1/1/1", class: "name" do
                   = scategory.small_category
     %section.l-title.clearfix
       %h4
@@ -39,9 +37,7 @@
           %a.s-category
             - @scategory.each do |scategory|
               %p
-                / =link_to category_index_path, class: "name" do
-                /   = scategory.small_category
-                %a.name{:href => "category/large_category/1"}
+                =link_to "category/small_category/1/1/1", class: "name" do
                   = scategory.small_category
     %section.l-title.clearfix
       %h4
