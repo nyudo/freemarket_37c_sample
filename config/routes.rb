@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/confirm' => 'users/registrations#confirm'
     post 'users/complete' => 'users/registrations#complete', as: 'user_detail'
+    post 'users/logout'  => 'users/sessions#logout'
   end
 
   root 'items#index'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get "users/purchase" => "users#purchase"
   get "users/purchased" => "users#purchased"
   get "users/listing" => "users#listing"
+  get "users/logout" => "users#logout"
   resources :users, only: [:index, :edit, :update, :show]
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
