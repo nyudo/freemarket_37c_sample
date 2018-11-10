@@ -1,17 +1,13 @@
-= "#{@large_category_items.first.large_category.large_category}の商品一覧"
-- @large_category_items.each do |item|
-  %section.item-box
-    =link_to item_path(item.id) do
-      %figure.item-box__photo
-        .item-box-image
-          = image_tag item.images.first.image, size: "213x213"
-      .item-box__text
-        %h3.item-box__text__name.font-2
-          = item.item_name
-        .item-box__text__num.clearfix
-          .item-box__text__num__price
-            = item.price
-          .item-box__text__num__likes.font-2
-            %i{class: "far fa-heart heart-icon"}
-            %span 10
-          .item-box__text__num__tax  (税込)
+= render partial: 'items/shared/header'
+%main.item-box-list.clearfix
+  .item-content
+    %ul.parts-nav.clearfix
+      - @medium_category_items.each do |mcategory|
+        %li
+          %a.l-category-n
+            = mcategory.medium_category
+    %section.item-box-content.clearfix
+      %h1.items-box-head.clearfix.bold= "#{@items.first.large_category.large_category}の商品一覧"
+      = render partial: 'form', collection: @items, as: "item"
+  = render partial: 'users/footer_sell_btn'
+=render "items/shared/footer"
