@@ -6,7 +6,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])         #idは仮置きです
+    @user = User.find_by(id: params[:id]) 
+    @item = @user.items.find(id: 1)   #idは仮置きです
+    @item_images = Image.where(item_id: 1)
+    @userdetail = UserDetail.find(id: 1)#idは仮置きです
+  end
+
+  def edit
+    
   end
 
   def in_progress
@@ -22,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def purchased
+    @user = User.find(1) #idは仮置きです.ログイン機能実装したらcurrent_user.idとします。
     @items = Item.be_bought(@user.id).where(status: :received).order("created_at DESC")
   end
 
@@ -30,9 +38,14 @@ class UsersController < ApplicationController
   end
 
   private
-
+  
+  def set_profile
+    @userdetail = UserDetail.find(params[ :profile]).merge(user_id: 1)
+  end
+  
   def set_user
     @user = User.find_by(id: 1)#idは仮置きです。ログイン機能実装したらcurrent_user.idとします。
   end
-
+ 
 end
+
