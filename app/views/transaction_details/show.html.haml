@@ -79,14 +79,14 @@
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
     / 下記idは仮置きです。右記を使用する予定です。全てcurrent_user.idを使用する予定です。
-  - if @item.buyer_id == 1 && @item.status == "shipped"
+  - if @item.buyer_id == current_user.id && @item.status == "shipped"
     受け取り確認をしてください
     商品が到着したら到着確認ボタンを押してください。
     = link_to "到着確認" ,transaction_detail_path,method: :patch,class: "item-buy-btn btn-red bold"
-  - elsif @item.buyer_id == 1 && @item.status != "shipped"
+  - elsif @item.buyer_id == current_user.id && @item.status != "shipped"
     商品がまだ発送されておりません。
     発送をお待ちください
-  - elsif @item.user_id == 1 && @item.status == "shipped"
+  - elsif @item.user_id == current_user.id && @item.status == "shipped"
     購入者の到着確認をお待ちください。
   - else
     発送をしてください
