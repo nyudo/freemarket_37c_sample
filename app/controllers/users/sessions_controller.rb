@@ -17,7 +17,11 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+  def destroy
+    super
+    # session.delete(:user_id)
+    # @current_user = nil
+  end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
