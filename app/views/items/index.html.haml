@@ -1,7 +1,7 @@
-= flash[:notice]
 .default-container
   -if user_signed_in?
     =render partial: "items/shared/header", locals: {}
+    = flash[:notice]
   -else
     =render partial: "items/shared/header_signup"
   %main{class: "white", role: "main" }

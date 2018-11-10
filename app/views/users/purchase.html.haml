@@ -1,39 +1,7 @@
 = flash[:notice]
 = render partial: 'items/shared/header'
 .mypage-container.clearfix
-  %main.l-container
-    %section.mypage-tab-container
-      %h2.mypage-tab-head.bold 取引中の商品
-      %ul.listing-tabs
-        %li
-          %h3  出品中
-          %a
-        %li.active
-          %h3  取引中
-        %li
-          %h3  購入済
-      .tab-content
-        - if @items.length != 0
-          %ul.notification__content
-            - @items.each do |item|
-              %li
-                .mypage-item-link
-                  =link_to item_path(item.id) do
-                    %figure
-                      = image_tag item.images.first.image, width: "48"
-                    .mypage-item-body
-                      .mypage-item-text
-                        %ul
-                          %li
-                            = item.item_name
-                          %li
-                            取引中
-        - else
-          %ul.mypage-item-list
-          %li.mypage-item-not-found.bold 取引中の商品がありません
-    %ul.mypage-history
-      %li.paper-prev.paper-cell
-      %li.paper-nextpaper-cell
+  = render partial: 'buying_list',locals: {items: @items}
   = render partial: 'sidebar'
   = render partial: 'footer_sell_btn'
 = render partial: 'items/shared/footer'
