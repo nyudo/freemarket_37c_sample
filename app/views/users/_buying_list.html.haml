@@ -33,17 +33,17 @@
                           %li
                             = item.item_name
                           %li
-                            購入済み
+                            取引中
                 - if action_name == "purchased"
                   %figure
-                  = image_tag item.images.first.image, width: "48"
-                .mypage-item-body
-                  .mypage-item-text
-                    %ul
-                      %li
-                        = item.item_name
-                      %li
-                        購入済み
+                    = image_tag item.images.first.image, width: "48"
+                  .mypage-item-body
+                    .mypage-item-text
+                      %ul
+                        %li
+                          = item.item_name
+                        %li
+                          購入済み
       - else
         %ul.mypage-item-list
         %li.mypage-item-not-found.bold
