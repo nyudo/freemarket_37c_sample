@@ -6,7 +6,7 @@ PICTURE_COUNT = 4
   def payjp
     require 'payjp'
     Payjp.api_key = PAYJP_SECRET_KEY
-    @user = User.find(1)   #id: 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
+    @user = User.find(current_user.id)   #id: 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
     @item.with_lock do
       if @item.buyer_id == nil
         Payjp::Charge.create(
@@ -15,6 +15,7 @@ PICTURE_COUNT = 4
           :currency => 'jpy',
         )
         @item.update!(buyer_id: @user.id)
+        @item.update!(status: :trading)
         redirect_to  users_purchase_path
         flash[:notice] = '購入が完了しました。'
       else
@@ -25,7 +26,6 @@ PICTURE_COUNT = 4
   end
 
   def index
-
     @items = Item.where(status: :displayed).order("created_at desc")
 
   end
@@ -47,7 +47,7 @@ PICTURE_COUNT = 4
 
 # user_id 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
   def destroy
-    if @item.user_id == 1
+    if @item.user_id == current_user.id
        @item.destroy
        redirect_to users_listing_path
     else
@@ -56,7 +56,7 @@ PICTURE_COUNT = 4
   end
 
   def show
-    @user = User.find(1) #挙動確認用の仮置きユーザーです。（商品詳細ページでuserによって購入or編集を切り替えるため）
+    @user = User.find(current_user.id) #挙動確認用の仮置きユーザーです。（商品詳細ページでuserによって購入or編集を切り替えるため）
     @images = @item.images.order("created_at DESC")
   end
 
@@ -108,7 +108,7 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: 1) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id) #idは仮置きです。
   end
 
 
