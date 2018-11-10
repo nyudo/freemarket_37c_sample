@@ -15,6 +15,7 @@ PICTURE_COUNT = 4
           :currency => 'jpy',
         )
         @item.update!(buyer_id: @user.id)
+        @item.update!(status: :trading)
         redirect_to  users_purchase_path
         flash[:notice] = '購入が完了しました。'
       else
@@ -25,7 +26,6 @@ PICTURE_COUNT = 4
   end
 
   def index
-
     @items = Item.where(status: :displayed).order("created_at desc")
 
   end
