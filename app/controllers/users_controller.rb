@@ -26,8 +26,6 @@ class UsersController < ApplicationController
   end
 
   def listing
-    # @items = @user.items.where(status: "displayed" || "stopped" ).order("created_at DESC")
-    # @items = @user.items.where("(status = ?) OR (status = ?)", :displayed, :stopped).order("created_at DESC")
     @items = @user.items.where(status: :stopped).order("created_at DESC") .or @user.items.where(status: :displayed).order("created_at DESC")
   end
 
