@@ -1,0 +1,56 @@
+%main.l-container
+  %section.mypage-tab-container
+    %h2.mypage-tab-head.bold 出品した商品
+    %ul.listing-tabs
+      %li
+        %h3  出品中
+        %a
+      - if action_name == "in_progress"
+        %li.active
+          %h3  取引中
+      - else
+        %li
+          %h3  取引中
+      - if action_name == "completed"
+        %li.active
+          %h3  売却済
+      - else
+        %li
+          %h3  売却済
+    .tab-content
+      - if items.length != 0
+        %ul.notification__content
+          - items.each do |item|
+            %li
+              .mypage-item-link
+                - if action_name == "in_progress"
+                  = link_to  transaction_detail_path(item.id) do
+                    %figure
+                      = image_tag item.images.first.image, width: "48"
+                    .mypage-item-body
+                      .mypage-item-text
+                        %ul
+                          %li
+                            = item.item_name
+                          %li
+                            取引中
+                - if action_name == "completed"
+                  %figure
+                    = image_tag item.images.first.image, width: "48"
+                    .mypage-item-body
+                      .mypage-item-text
+                        %ul
+                          %li
+                            = item.item_name
+                            %li
+                              販売済み
+      - else
+        %ul.mypage-item-list
+        %li.mypage-item-not-found.bold
+          - if action_name == "in_progress"
+            取引中の商品がありません
+          - if action_name == "completed"
+            売却済みの商品がありません
+  %ul.mypage-history
+    %li.paper-prev.paper-cell
+    %li.paper-nextpaper-cell
