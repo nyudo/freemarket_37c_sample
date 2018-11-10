@@ -162,7 +162,8 @@ section.user-icon {
     font-size: 16px;
     color: #ccc;
     box-sizing:border-box;
-    background: white url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?59913550");
+    background: white url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?96275498");
+    background-size: 78px 85px;
     background-repeat: no-repeat;
     background-position: center 40px;
 }
@@ -207,16 +208,19 @@ section.user-icon {
       text-align: center;
       li{
         width: 33.3%;
+      }
+      .half-tab{
+        width: 50%;
+      }
         h3{
           color: #333;
-        }
+      }
       }
      .active{
       background-color: white;
       border-top: 2px solid #ea352d;
     }
   }
-}
 
 .notification__content{
   li{
