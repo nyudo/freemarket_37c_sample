@@ -23,7 +23,7 @@
           - items.each do |item|
             %li
               .mypage-item-link
-                - if controller.action_name == "in_progress"
+                - if action_name == "in_progress"
                   = link_to  transaction_detail_path(item.id) do
                     %figure
                       = image_tag item.images.first.image, width: "48"
@@ -34,7 +34,7 @@
                             = item.item_name
                           %li
                             取引中
-                - if controller.action_name == "completed"
+                - if action_name == "completed"
                   %figure
                     = image_tag item.images.first.image, width: "48"
                     .mypage-item-body
@@ -45,12 +45,12 @@
                             %li
                               販売済み
       - else
-        - if controller.action_name == "in_progress"
-          %ul.mypage-item-list
-          %li.mypage-item-not-found.bold 取引中の商品がありません
-        - if controller.action_name == "completed"
-          %ul.mypage-item-list
-          %li.mypage-item-not-found.bold 売却済みの商品がありません
+        %ul.mypage-item-list
+        %li.mypage-item-not-found.bold
+          - if action_name == "in_progress"
+            取引中の商品がありません
+          - if action_name == "completed"
+            売却済みの商品がありません
   %ul.mypage-history
     %li.paper-prev.paper-cell
     %li.paper-nextpaper-cell

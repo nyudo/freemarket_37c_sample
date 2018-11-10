@@ -51,7 +51,7 @@ PICTURE_COUNT = 4
        @item.destroy
        redirect_to users_listing_path
     else
-       redirect_to item_path(@item.id)
+       redirect_to item_path(@item)
     end
   end
 
@@ -81,7 +81,7 @@ PICTURE_COUNT = 4
       redirect_back(fallback_location: root_path)
       flash[:stop] = "出品の一旦停止をしました。"
     else
-      redirect_to item_path(@item.id)
+      redirect_to item_path(@item)
       flash[:stop] = "出品の一旦停止に失敗しました。"
     end
   end
@@ -91,7 +91,7 @@ PICTURE_COUNT = 4
       redirect_back(fallback_location: root_path)
       flash[:resume] = "出品の再開をしました。"
     else
-      redirect_to item_path(@item.id)
+      redirect_to item_path(@item)
       flash[:resume] = "出品の再開に失敗しました。"
     end
   end

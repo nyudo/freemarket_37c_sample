@@ -33,13 +33,13 @@
         %tr
           %th カテゴリー
           %td
-            =link_to "/category/large_category/#{@item.large_category_id}" do
+            =link_to large_category_path(@item.large_category_id) do
               = @item.large_category.large_category
-            =link_to "/category/medium_category/#{@item.large_category_id}/#{@item.medium_category_id}" do
+            =link_to medium_category_path(@item.medium_category_id) do
               .item-detail-table-sub-category
                 =fa_icon 'angle-right', class: "icon-arrow-right"
                 = @item.medium_category.medium_category
-            =link_to "/category/small_category/#{@item.large_category_id}/#{@item.medium_category_id}/#{@item.small_category_id}" do
+            =link_to small_category_path(@item.small_category.id) do
               .item-detail-table-sub-sub-category
                 =fa_icon 'angle-right', class: "icon-arrow-right"
                 = @item.small_category.small_category

@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
   get "category/small_category/:large_category_id/:medium_category_id/:small_category_id" => "category#small_category"
 
-  resources :transaction_detail, only: [:show, :update]
+  resources :transaction_details, only: [:show, :update]
 end

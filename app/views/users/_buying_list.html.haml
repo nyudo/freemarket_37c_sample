@@ -5,13 +5,13 @@
       %li
         %h3  出品中
         %a
-      - if controller.action_name == "purchase"
+      - if action_name == "purchase"
         %li.active
           %h3  取引中
       -else
         %li
           %h3  取引中
-      - if controller.action_name == "purchased"
+      - if action_name == "purchased"
         %li.active
           %h3  購入済
       -else
@@ -23,7 +23,7 @@
           - @items.each do |item|
             %li
               .mypage-item-link
-                - if controller.action_name == "purchase"
+                - if action_name == "purchase"
                   =link_to transaction_detail_path(item.id) do
                     %figure
                       = image_tag item.images.first.image, width: "48"
@@ -34,7 +34,7 @@
                             = item.item_name
                           %li
                             購入済み
-                - if controller.action_name == "purchased"
+                - if action_name == "purchased"
                   %figure
                   = image_tag item.images.first.image, width: "48"
                 .mypage-item-body
@@ -47,9 +47,9 @@
       - else
         %ul.mypage-item-list
         %li.mypage-item-not-found.bold
-          - if controller.action_name == "purchase"
+          - if action_name == "purchase"
             取引中の商品がありません
-          - if controller.action_name == "purchased"
+          - if action_name == "purchased"
             購入済みの商品がありません
   %ul.mypage-history
     %li.paper-prev.paper-cell

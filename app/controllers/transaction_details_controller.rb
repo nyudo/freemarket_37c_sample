@@ -1,4 +1,4 @@
-class TransactionDetailController < ApplicationController
+class TransactionDetailsController < ApplicationController
 
   before_action :set_item, only:[:show, :update]
 
