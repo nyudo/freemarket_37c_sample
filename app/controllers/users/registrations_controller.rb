@@ -6,22 +6,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def confirm
     @user = User.new(sign_up_params)
-    if @user.valid?
-      @user.save
+    if @user.save
       @userdetail = UserDetail.new
       render action: 'confirm'
     else
-     render action: 'new'
+      render action: 'new'
     end
   end
 
   def complete
     @userdetail = UserDetail.new(signup_params)
-    if @userdetail.valid?
-       @userdetail.save
-       render action: 'complete'
+    if @userdetail.save
+      render action: 'complete'
     else
-       render action: 'new'
+      # binding.pry
+      redirect_to action: 'new'
     end
   end
 
