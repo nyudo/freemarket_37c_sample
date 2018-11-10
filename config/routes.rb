@@ -20,10 +20,14 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
     post :payjp, on: :member
     get :buy, on: :member
+    get :stop, on: :member
+    get :resume, on: :member
   end
   post "items/create" => "items/create"
   resources :category, only: [:index, :show]
   get "category/large_category/:large_category_id" => "category#large_category"
   get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
   get "category/small_category/:large_category_id/:medium_category_id/:small_category_id" => "category#small_category"
+
+  resources :transaction_details, only: [:show, :update]
 end
