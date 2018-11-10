@@ -81,12 +81,14 @@
   @include pc() {
     width : 1020px;
   }
-.l-container{
+.logout-container{
   float: right;
   width:700px;
   box-sizing:border-box;
+  background-color: white;
+  padding: 100px 0px;
   .next-submit{
-    width: 320px;
+    width: 340px;
     display: block;
     margin: 0px auto;
     line-height: 48px;
@@ -94,7 +96,16 @@
     color: white;
     background-color: $clean_red;
     text-align: center;
-    padding: 0px 10px;
+    .delete{
+      width: 340px;
+      display: block;
+      margin: 0px auto;
+      line-height: 48px;
+      font-size: 14px;
+      color: white;
+      background-color: $clean_red;
+      text-align: center;
+    }
   }
 }
 }

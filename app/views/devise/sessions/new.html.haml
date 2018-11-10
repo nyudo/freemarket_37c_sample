@@ -1,17 +1,48 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+/ %h2 Log in
+/ = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+/   .field
+/     = f.label :email
+/     %br/
+/     = f.email_field :email, autofocus: true, autocomplete: "email"
+/   .field
+/     = f.label :password
+/     %br/
+/     = f.password_field :password, autocomplete: "current-password"
+/   - if devise_mapping.rememberable?
+/     .field
+/       = f.check_box :remember_me
+/       = f.label :remember_me
+/   .actions
+/     = f.submit "Log in"
+/ = render "devise/shared/links"
+
+
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .login-panel
+      .login-no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to "/users/new" do
+          新規会員登録
+      .login-form-inner
+        .btn-sns-facebook
+          Facebookでログイン
+          .icon-facebook.fa-lg
+            = fa_icon'facebook-square'
+        .btn-sns-google
+          Googleでログイン
+          .icon-google-plus.fa-lg
+            = fa_icon'google-plus'
+      .login-meil
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-default", placeholder: "メールアドレス"
+            / %input{type: "email", class: "input-default", name: "email", placeholder: "メールアドレス"}
+          .form
+            = f.password_field :password, autocomplete: "current-password", class: "input-default", placeholder: "パスワード"
+            / %input{type: "password", class: "input-default", name: "password", placeholder: "パスワード"}
+          .form
+            = f.submit "ログイン",class: "login-submit"
+            %a パスワードをお忘れの方
+  =render "items/shared/simple_footer"
