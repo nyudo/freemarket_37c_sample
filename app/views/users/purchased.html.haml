@@ -2,14 +2,14 @@
 .mypage-container.clearfix
   %main.l-container
     %section.mypage-tab-container
-      %h2.mypage-tab-head.bold 出品した商品
+      %h2.mypage-tab-head.bold 購入した商品
       %ul.listing-tabs
         %li.half-tab
           =link_to users_purchase_path do
             %h3.bold 取引中
         %li.half-tab.active
           =link_to users_purchased_path do
-            %h3.bold  売却済
+            %h3.bold  購入済
       .tab-content
         - if @items.length != 0
           %ul.border.notification__content
@@ -25,10 +25,11 @@
                       .mypage-item-box.font-2
                         %i{class: "far fa-heart heart-icon"}
                         %span 10
+                        .btn-blue.sell-btn 購入完了
                         %i.fas.fa-angle-right.fa-lg
         - else
           %ul.mypage-item-list
-          %li.mypage-item-not-found.bold 出品中の商品がありません
+          %li.mypage-item-not-found.bold 購入済の商品がありません
     %ul.mypage-history
       %li.paper-prev.paper-cell
       %li.paper-nextpaper-cell
