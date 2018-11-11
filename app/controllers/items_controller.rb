@@ -6,7 +6,7 @@ PICTURE_COUNT = 4
   def payjp
     require 'payjp'
     Payjp.api_key = PAYJP_SECRET_KEY
-    @user = User.find(current_user.id)   #id: 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
+    @user = User.find(current_user.id)
     @item.with_lock do
       if @item.buyer_id == nil
         Payjp::Charge.create(
@@ -26,8 +26,8 @@ PICTURE_COUNT = 4
   end
 
   def index
-    @items = Item.where(status: :displayed).order("created_at desc")
-
+    @items = Item.where(status: :displayed).order("RAND()").limit(4)
+    @ladies_items = Item.where(large_category_id: '1').where(status: :displayed).order("created_at DESC").limit(4)
   end
 
   def new
@@ -45,7 +45,6 @@ PICTURE_COUNT = 4
     end
   end
 
-# user_id 1は仮置きです。ログイン機能実装したらcurrent_user.idとします。
   def destroy
     if @item.user_id == current_user.id
        @item.destroy
@@ -56,7 +55,7 @@ PICTURE_COUNT = 4
   end
 
   def show
-    @user = User.find(current_user.id) #挙動確認用の仮置きユーザーです。（商品詳細ページでuserによって購入or編集を切り替えるため）
+    @user = User.find(current_user.id)
     @images = @item.images.order("created_at DESC")
   end
 

@@ -21,13 +21,24 @@
               %image{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2900942513",  class: "app"}
         %image{src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2900942513", class: "mobile"}
     .pickup-container
-      %h2.pickup-head  全てのカテゴリー
+      %h2.pickup-head.bold  ピックアップカテゴリー
       %section.item-box-container.clearfix
-        %h3.sub-title
-          %a  全ての商品
+        %h3.sub-title.bold
+          =link_to "/category/large_category/1", class: "view-all-link" do
+            ピックアップアイテム
         .items-box-content.clearfix
-          =render partial: "items/items"
+          =render partial: "items/items", collection: @items, as: "item"
         .view-all
-          %a  全ての商品を見る
+          =link_to "/category/large_category/1", class: "view-all-link" do
+            すべての商品を見る
+      %section.item-box-container.clearfix
+        %h3.sub-title.bold
+          =link_to "/category/large_category/1", class: "view-all-link" do
+            レディース新着アイテム
+        .items-box-content.clearfix
+          =render partial: "items/items", collection: @ladies_items, as: "item"
+        .view-all
+          =link_to "/category/large_category/1", class: "view-all-link" do
+            すべての商品を見る
   = render partial: 'users/footer_sell_btn'
   =render "items/shared/footer"
