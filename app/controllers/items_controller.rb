@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
 PICTURE_COUNT = 4
   before_action :set_item ,only:[:payjp,:destroy,:show,:edit,:update,:stop,:resume,:buy]
-
   def payjp
     require 'payjp'
     Payjp.api_key = PAYJP_SECRET_KEY
@@ -31,8 +30,12 @@ PICTURE_COUNT = 4
   end
 
   def new
-    @item = Item.new
-    PICTURE_COUNT.times{@item.images.build}
+    if user_signed_in?
+      @item = Item.new
+      PICTURE_COUNT.times{@item.images.build}
+    else
+      redirect_to new_current_user_session_path
+    end
   end
 
   def create
@@ -55,7 +58,6 @@ PICTURE_COUNT = 4
   end
 
   def show
-    @user = User.find(current_user.id)
     @images = @item.images.order("created_at DESC")
   end
 
@@ -96,7 +98,11 @@ PICTURE_COUNT = 4
   end
 
   def buy
-    @image = @item.images.first
+    if user_signed_in?
+      @image = @item.images.first
+    else
+      redirect_to new_current_user_session_path
+    end
   end
 
   def area
