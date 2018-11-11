@@ -1,4 +1,7 @@
-= render partial: 'items/shared/header'
+-if user_signed_in?
+  =render partial: "items/shared/header", locals: {}
+-else
+  =render partial: "items/shared/header_signup"
 = flash[:stop]
 = flash[:resume]
 %section.item-box-container.l-single-container.item-single-contents
@@ -90,7 +93,6 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-    / 下記idは仮置きです。右記を使用する予定です。- if user_signed_in? && current_user.id == @item.user_id
   - if user_signed_in? && current_user.id == @item.user_id
     .item-description
       %p
