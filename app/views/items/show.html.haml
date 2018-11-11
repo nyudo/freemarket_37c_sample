@@ -1,4 +1,7 @@
-= render partial: 'items/shared/header'
+-if user_signed_in?
+  =render partial: "items/shared/header", locals: {}
+-else
+  =render partial: "items/shared/header_signup"
 = flash[:stop]
 = flash[:resume]
 %section.item-box-container.l-single-container.item-single-contents
