@@ -71,7 +71,7 @@
       %h3.mypage-nav__head 設定
       %ul.mypage-nav__list
         %li
-          = link_to "/users/show(@user.id)",action: :edit,class: "mypage-nav__list--item" do
+          = link_to "/users/#{@user.id}/edit",class: "mypage-nav__list--item" do
             プロフィール
             %i.fas.fa-angle-right.fa-lg
         %li
@@ -95,7 +95,7 @@
             電話番号の確認
             %i.fas.fa-angle-right.fa-lg
         %li
-          %a.mypage-nav__list--item{href: "/jp/logout/"}
+          %a
             = link_to users_logout_path,class: "mypage-nav__list--item" do
               ログアウト
               %i.fas.fa-angle-right.fa-lg

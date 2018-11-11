@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
+    @userdetail = UserDetail.find(params[:id])
   end
 
   def in_progress
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def set_profile
-    @userdetail = UserDetail.find(params[ :profile]).merge(user_id: 1)
+    @userdetail = UserDetail.find(params[ :profile]).merge(user_id: current_user.id)
   end
 
   def set_user
