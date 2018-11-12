@@ -93,7 +93,7 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-  - if user_signed_in? && current_user.id == @item.user_id && (@item.status == "displayed" or @item.status =="stopped")
+  - if user_signed_in? && current_user.id == @item.user_id && @item.buyer_id == nil &&(@item.status == "displayed" or @item.status =="stopped")
     .item-description
       %p
         = simple_format(@item.description)
@@ -108,11 +108,14 @@
         = link_to "出品を再開する",resume_item_path(@item),class: "btn__default--red"
       = link_to "この商品を削除する",item_path(@item),method: :delete, data: {confirm: "本当に削除しますか？"},class: "btn__default--grey"
   - elsif user_signed_in? && current_user.id == @item.user_id && (@item.status == "shipped" or @item.status =="trading" )
-    商品が購入されました。マイページから取引状況をご確認ください。
+    .item-buy-text.btn-off.bold
+      商品が購入されました。マイページから取引状況をご確認ください。
   - elsif  @item.buyer_id == current_user.id  && (@item.status == "shipped" or @item.status =="trading" )
-    お客様の購入した商品です。マイページから取引状況をご確認ください。
+    .item-buy-text.btn-off.bold
+      購入した商品です。マイページから取引状況をご確認ください。
   - elsif   @item.status == "shipped" or @item.status =="trading"
-    売却済みの商品です。購入はできません。
+    .item-buy-btn.btn-off.bold
+      売り切れました。
   - else
     = link_to '購入画面に進む', buy_item_path(@item), class: "item-buy-btn btn-red bold"
     .item-description
