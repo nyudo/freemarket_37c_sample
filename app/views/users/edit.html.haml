@@ -5,13 +5,13 @@
       %h2
         プロフィール
     %section.profile-icon
-      = form_for @user, url: {action: "index"} do |f|
+      = form_for @user do |f|
         %figure
           = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
         .name-form
           = f.text_field :nickname, class: "name-default", autofocus: true,placeholder: "Ann", value: @user.nickname
     .setting-profile-content
-      = form_for @userdetail, url: {action: "index"} do |f|
+      = form_for @userdetail do |f|
         .form
           = f.text_area :profile, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: @userdetail.profile
           = f.submit "変更する", class: "next-submit"
