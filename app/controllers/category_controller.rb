@@ -6,19 +6,9 @@ class CategoryController < ApplicationController
     @scategory = SmallCategory.select("small_category")
   end
 
-  def large_category
-    @medium_category_items = MediumCategory.select("medium_category")
-    @items = Item.where(large_category_id: params[:large_category_id]).where.not(status: :stopped)
+  def show
+    @items = Item.where(large_category_id: @item.large_category_id).where(medium_category_id: @item.medium_category_id).where(small_category_id: @item.small_category_id)
   end
 
-  def medium_category
-    @small_category_items = SmallCategory.select("small_category")
-    @items = large_category.where(medium_category_id: params[:medium_category_id]).where.not(status: :stopped)
-  end
-
-  def small_category
-    @small_category_items = SmallCategory.select("small_category")
-    @items = medium_category.where(small_category_id: params[:small_category_id]).where.not(status: :stopped)
-  end
 
 end
