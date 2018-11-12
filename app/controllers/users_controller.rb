@@ -4,15 +4,11 @@ class UsersController < ApplicationController
 
   def index
     @item = Item.where(user_id: current_user.id)
-    @items = Item.be_bought(@user.id).where.not(status: :received).order("created_at DESC")
-    @bought_items = Item.be_bought(@user.id).where(status: :received).order("created_at DESC")
+    @items = Item.be_bought(@user.id).where.not(status: 2).order("created_at DESC")
+    @bought_items = Item.be_bought(@user.id).where(status: 2).order("created_at DESC")
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @item = @user.items.find(id: 1)   #
-    @item_images = Image.where(item_id: 1)
-    @userdetail = UserDetail.find(id: 1)#idは仮置きです
   end
 
   def edit
