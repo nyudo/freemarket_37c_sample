@@ -1,4 +1,7 @@
-= render partial: 'items/shared/header'
+-if user_signed_in?
+  =render partial: "items/shared/header", locals: {}
+-else
+  =render partial: "items/shared/header_signup"
 = flash[:stop]
 = flash[:resume]
 %section.item-box-container.l-single-container.item-single-contents
@@ -90,21 +93,20 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-    / 下記idは仮置きです。右記を使用する予定です。- if user_signed_in? && current_user.id == @item.user_id
-  - if @item.user_id == @user.id
-    %ul
-      %li
-        = link_to "商品の編集"
-      %li
+  - if user_signed_in? && current_user.id == @item.user_id
+    .item-description
+      %p
+        = simple_format(@item.description)
+    .item-change-box
+    .btn__default
+      = link_to "商品の編集",edit_user_path(@item),class: "btn__default--red"
+      .btn__default--or
         or
       - if @item.status == "displayed"
-        %li
-          = link_to "出品を停止する",stop_item_path(@item)
+        = link_to "出品を一旦停止する",stop_item_path(@item),class: "btn__default--grey"
       - else
-        %li
-          = link_to "出品を再開する",resume_item_path(@item)
-      %li
-        = link_to "この商品を削除する",item_path(@item),method: :delete, data: {confirm: "本当に削除しますか？"}
+        = link_to "出品を再開する",resume_item_path(@item),class: "btn__default--red"
+      = link_to "この商品を削除する",item_path(@item),method: :delete, data: {confirm: "本当に削除しますか？"},class: "btn__default--grey"
   - else
     = link_to '購入画面に進む', buy_item_path(@item), class: "item-buy-btn btn-red bold"
     .item-description
