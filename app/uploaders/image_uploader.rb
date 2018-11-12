@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
 
-  # storage :file
+  storage :file
   process convert: 'jpg'
   # storage :fog
 
