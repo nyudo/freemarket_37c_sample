@@ -26,10 +26,17 @@ Rails.application.routes.draw do
     get :resume, on: :member
   end
   post "items/create" => "items/create"
-  resources :category, only: [:index, :show]
-  get "category/large_category/:large_category_id" => "category#large_category"
-  get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
-  get "category/small_category/:large_category_id/:medium_category_id/:small_category_id" => "category#small_category"
+  resources :category, only: [:index,:show]
+
+  resources :large_category, only: [:show] do
+    resources :medium_category, only: [:show] do
+      resources :small_category, only: [:show]
+    end
+  end
+
+  # get "large_category/:large_category_id" => "category#large_category"
+  # get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
+  # get "category/small_category/:large_category_id/:medium_category_id/:small_category_id" => "category#small_category"
 
   resources :transaction_details, only: [:show, :update]
 end

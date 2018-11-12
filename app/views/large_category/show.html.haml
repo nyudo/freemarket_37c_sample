@@ -8,6 +8,6 @@
             = mcategory.medium_category
     %section.item-box-content.clearfix
       %h1.items-box-head.clearfix.bold= "#{@items.first.large_category.large_category}の商品一覧"
-      = render partial: 'form', collection: @items, as: "item"
+      = render partial: '/category/form', collection: @items, as: "item"
   = render partial: 'users/footer_sell_btn'
 =render "items/shared/footer"

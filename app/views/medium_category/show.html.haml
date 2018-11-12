@@ -7,7 +7,7 @@
           %a.l-category-n
             = scategory.small_category
     %section.item-box-content.clearfix
-      %h1.items-box-head.clearfix.bold= "#{@items.first.small_category.small_category}の商品一覧"
-      = render partial: 'form', collection: @items, as: "item"
+      %h1.items-box-head.clearfix.bold= "#{@items.first.medium_category.medium_category}の商品一覧"
+      = render partial: '/category/form', collection: @items, as: "item"
   = render partial: 'users/footer_sell_btn'
 =render "items/shared/footer"
