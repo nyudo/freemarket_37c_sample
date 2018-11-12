@@ -5,8 +5,6 @@
       .next-submit
         = link_to current_user_session_path, controller: :sessions, method: :delete do
           = submit_tag 'ログアウト', class: 'delete'
-  = render partial: 'sidebar'
+  = render partial: 'sidebar', locals: { user: @user }
   = render partial: 'footer_sell_btn'
 = render partial: 'items/shared/footer'
-
-/ registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
