@@ -31,6 +31,7 @@
     width: auto;
     }
     .item-box{
+      position:relative;
       @include tab() {
       margin-right: 20px;
       width: 213px;
@@ -128,3 +129,32 @@
   }
 }
 
+.sold-badge{
+  color: $white;
+  position: absolute;
+  transform: rotate(-45deg);
+  letter-spacing: 2px;
+  left: 0;
+  z-index: 2;
+  @include tab() {
+  font-size: 26px;
+  top: 20px;
+ }
+}
+
+.item-sold-out-badge:after{
+  border-color: $clean_red transparent transparent transparent;
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  border-style: solid;
+  top: 0;
+  left: 0;
+  height:0;
+  width:0;
+  @include tab() {
+  border-width: 100px 100px 0 0;
+  }
+
+}
