@@ -59,11 +59,11 @@ PICTURE_COUNT = 4
 
   def show
     @images = @item.images.order("created_at DESC")
-    @other_items = Item.where.not(status: :received).where.not(id: @item.id)
+    @other_items = Item.where.not(status: :received).where.not(id: @item.id).limit(3)
   end
 
   def edit
-    if @item.user != current_user.id
+    if @item.user_id != current_user.id
       redirect_to root_path, notice: "権限がありません"
     end
     # @item.images = Image.new if @item.images.blank?
