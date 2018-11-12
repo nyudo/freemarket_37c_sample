@@ -1,20 +1,22 @@
 class UsersController < ApplicationController
 
-   before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing]
+   before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing, :logout]
 
   def index
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @item = @user.items.find(id: 1)   #idは仮置きです
-    @item_images = Image.where(item_id: 1)
-    @userdetail = UserDetail.find(id: 1)#idは仮置きです
   end
 
   def edit
     @user = User.find(params[:id])
+    @user.user_detail = UserDetail.new if @user.user_detail.blank?
     @userdetail = UserDetail.find(params[:id])
+  end
+
+  def update
+    @user = User.update(user_params)
+    redirect_to users_path
   end
 
   def in_progress
@@ -37,7 +39,18 @@ class UsersController < ApplicationController
     @items = @user.items.where(status: :stopped).order("created_at DESC") .or @user.items.where(status: :displayed).order("created_at DESC")
   end
 
+  def logout
+  end
+
   private
+
+  def user_params
+    params.require(:user).permit(:nickname ,:id, user_detail_attributes:[:profile])
+  end
+
+  def userdetail_params
+    params.require(:user_detail).permit(:profile).merge(user_id: current_user.id)
+  end
 
   def set_profile
     @userdetail = UserDetail.find(params[ :profile]).merge(user_id: current_user.id)
