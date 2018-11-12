@@ -6,10 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @item = @user.items.find(id: 1)   #idは仮置きです
-    @item_images = Image.where(item_id: 1)
-    @userdetail = UserDetail.find(id: 1)#idは仮置きです
   end
 
   def edit
