@@ -7,6 +7,7 @@
   height: 90px;
   margin: 0 auto;
   padding-top: 8px;
+
   @include pc () {
     width: 1020px;
   }
@@ -128,3 +129,43 @@
   color: #0099e8;
 }
 
+.header-text{
+  position: relative;
+}
+
+.dropdown_category{
+  position: absolute;
+  width: auto;
+  top: 85px;
+  background-color: $white;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+  z-index: 1000;
+  color: black;
+  display: none;
+  li{
+    width: 224px;
+    a{
+      padding: 0 16px;
+      line-height: 44px;
+      display: block;
+    }
+    a:hover{
+      background-color: $clean_red;
+      color: $white;
+    }
+  }
+}
+
+.dropdown_midcategory{
+  display:inline-block;
+  position: absolute;
+  top: 0;
+  left: 224px;
+  background-color: $white;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+  font-size: 14px;
+  display: none;
+  li {
+    white-space: nowrap;
+  }
+}
