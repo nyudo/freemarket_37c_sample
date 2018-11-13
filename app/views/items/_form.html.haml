@@ -1,25 +1,25 @@
 = form_for @item do |f|
-  .sell-inner
-    %h2.l-single-head  商品の情報を入力
-    %form.sell-form
-      .sell-upload-box
-        %h3
-          出品画像
-          %span.form-require  必須
-        %p  最大4枚までアップロードできます
-        -# =render partial: "sell_img", locals: {image: @image}
-        .sell-dropbox.clearfix
-          .upload-dropbox
-            .upload-dropbox__text
-              ドラッグアンドドロップ
-              %br またはクリックしてファイルをアップロード
-              = f.fields_for :images do |i|
-                = image_tag i.object.image, size: "75x75" if i.object.image.present?
-                -# = i.file_field :image
-                -# = i.hidden_field :id, value: i.object.id
-              -# = f.fields_for :images do |i|
-              -#   = i.label :image, "出品画像" do
-              -#     = i.file_field :image
+  / .sell-inner
+  /   %h2.l-single-head  商品の情報を入力
+  /   %form.sell-form
+  /     .sell-upload-box
+  /       %h3
+  /         出品画像
+  /         %span.form-require  必須
+  /       %p  最大4枚までアップロードできます
+  /       -# =render partial: "sell_img", locals: {image: @image}
+  /       .sell-dropbox.clearfix
+  /         .upload-dropbox
+  /           .upload-dropbox__text
+  /             ドラッグアンドドロップ
+  /             %br またはクリックしてファイルをアップロード
+  /             = f.fields_for :images do |i|
+  /               = image_tag i.object.image, size: "75x75" if i.object.image.present?
+  /               -# = i.file_field :image
+  /               -# = i.hidden_field :id, value: i.object.id
+  /             -# = f.fields_for :images do |i|
+  /             -#   = i.label :image, "出品画像" do
+  /             -#     = i.file_field :image
   .sell-content
     .form-group
       %label
