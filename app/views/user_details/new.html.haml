@@ -23,7 +23,7 @@
           .form-group
             = f.label :都道府県
             = f.label :必須, class: "required"
-            = f.select :prefecture, User.prefectures.keys,{prompt: '選択してください'}, class: 'input-default'
+            = f.select :prefecture, UserDetail.prefectures.keys,{prompt: '選択してください'}, class: 'input-default'
           .form-group
             = f.label :市区町村
             = f.label :必須, class: "required"
