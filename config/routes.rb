@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
   }
 
   devise_scope :user do
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   get "users/logout" => "users#logout"
   resources :users, only: [:index, :edit, :update, :show] do
       resources :user_details, only: [:new ,:create, :edit, :update]
-      # get 'user/:user_id/user_details/new' => 'user_details#new', as: 'user_details/new'
   end
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
