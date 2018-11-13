@@ -5,15 +5,6 @@
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    &--notice{
-      color: #3c763d;
-      background-color: #dff0d8;
-      border-color: #d6e9c6;
-      line-height: 20px;
-      font-size: 14px;
-      -webkit-animation: fade-in-out 4s ease 2s forwards;
-      animation: fade-in-out 4s ease 2s forwards;
-    }
     &--alert{
       color: #a94442;
       background-color: #f2dede;
@@ -27,6 +18,15 @@
       color: #31708f;
       background-color: #d9edf7;
       border-color: #bce8f1;
+      line-height: 20px;
+      font-size: 14px;
+      -webkit-animation: fade-in-out 4s ease 2s forwards;
+      animation: fade-in-out 4s ease 2s forwards;
+    }
+    &--notice{
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
       line-height: 20px;
       font-size: 14px;
       -webkit-animation: fade-in-out 4s ease 2s forwards;
