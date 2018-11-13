@@ -19,14 +19,14 @@ PICTURE_COUNT = 4
         flash[:notice] = '購入が完了しました。'
       else
         redirect_to :root
-        flash[:notice] = '購入に失敗しました。申し訳ありません。入力中に出品停止されたか、他ユーザーに売却されました。'
+        flash[:alert] = '購入に失敗しました。申し訳ありません。入力中に出品停止されたか、他ユーザーに売却されました。'
       end
     end
   end
 
   def index
-    @items = Item.where.not(status: :stopped).where.not(status: :received).order("RAND()").limit(4)
-    @ladies_items = Item.where(large_category_id: '1').where(status: :displayed).order("created_at DESC").limit(4)
+    @items = Item.be_indexed.order("RAND()").limit(4)
+    @ladies_items = Item.where(large_category_id: '1').be_indexed.order("created_at DESC").limit(4)
   end
 
   def new
@@ -41,9 +41,10 @@ PICTURE_COUNT = 4
   def create
     @item = Item.new(item_params)
     if @item.save
-        redirect_to users_listing_path
+      redirect_to users_listing_path
+      flash[:notice] = "出品を完了しました。"
     else
-      flash[:notice] = "出品に失敗しました。"
+      flash[:alert] = "出品に失敗しました。"
       redirect_to :root
     end
   end
@@ -52,14 +53,16 @@ PICTURE_COUNT = 4
     if @item.user_id == current_user.id
        @item.destroy
        redirect_to users_listing_path
+       flash[:notice] = "削除を完了しました。"
     else
        redirect_to item_path(@item)
+       flash[:notice] = "削除に失敗しました。"
     end
   end
 
   def show
     @images = @item.images.order("created_at DESC")
-    @other_items = Item.where.not(status: :received).where.not(id: @item.id).limit(3)
+    @other_items = Item.where(user_id: @item.user_id).be_indexed.where.not(id: @item.id).limit(3)
   end
 
   def edit
@@ -76,30 +79,33 @@ PICTURE_COUNT = 4
 
   def update
     if @item.update(item_params)
-      redirect_to users_listing_path, notice: "商品を編集しました"
-      flash[:resume] = "編集を完了しました。"
+      redirect_to users_listing_path
+      flash[:notice] = "編集を完了しました。"
     else
       redirect_to edit_item_path
+      flash[:alert] = "編集に失敗しました。"
     end
   end
 
   def stop
     if @item.update(status: :stopped)
+
       redirect_back(fallback_location: root_path)
-      flash[:stop] = "出品の一旦停止をしました。"
+      flash[:notice] = "出品の一旦停止をしました。"
     else
       redirect_to item_path(@item)
-      flash[:stop] = "出品の一旦停止に失敗しました。"
+      flash[:alert] = "出品の一旦停止に失敗しました。"
     end
   end
 
   def resume
     if @item.update(status: :displayed)
+
       redirect_back(fallback_location: root_path)
-      flash[:resume] = "出品の再開をしました。"
+      flash[:notice] = "出品の再開をしました。"
     else
       redirect_to item_path(@item)
-      flash[:resume] = "出品の再開に失敗しました。"
+      flash[:alert] = "出品の再開に失敗しました。"
     end
   end
 
@@ -119,8 +125,7 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id) 
-    # params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id)
   end
 
 

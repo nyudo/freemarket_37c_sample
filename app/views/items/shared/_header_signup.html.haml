@@ -21,5 +21,14 @@
             = link_to new_current_user_session_path, class: "header-btn btn-red" do
               ログイン
           %li
-            = link_to new_user_path, class: "header-btn btn-signup" do
+            = link_to users_index_path, class: "header-btn btn-signup" do
               新規会員登録
+.flash_wrapper
+  .flash_box
+    .flash_box--notice
+      = flash[:notice]
+    .flash_box--alert
+      = flash.now[:alert]
+    .flash_box--info
+      = flash.now[:info]
+
