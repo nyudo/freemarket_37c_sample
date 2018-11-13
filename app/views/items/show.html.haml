@@ -110,7 +110,7 @@
   - elsif user_signed_in? && current_user.id == @item.user_id && (@item.status == "shipped" or @item.status =="trading" )
     .item-buy-text.btn-off.bold
       商品が購入されました。マイページから取引状況をご確認ください。
-  - elsif  @item.buyer_id == current_user.id  && (@item.status == "shipped" or @item.status =="trading" )
+  - elsif user_signed_in? && @item.buyer_id == current_user.id  && (@item.status == "shipped" or @item.status =="trading" )
     .item-buy-text.btn-off.bold
       購入した商品です。マイページから取引状況をご確認ください。
   - elsif   @item.status == "shipped" or @item.status =="trading"
