@@ -63,13 +63,15 @@ PICTURE_COUNT = 4
   end
 
   def edit
-    if @item.user_id != current_user.id
-      redirect_to root_path, notice: "権限がありません"
-    end
-    # @item.images = Image.new if @item.images.blank?
-    # count = @item.images.count
-    # (PICTURE_COUNT - count).times {@item.images.build}
-    # @item.images.cache_key unless @item.images.blank?
+
+    # if @item.user != current_user.id
+    #   redirect_to root_path, notice: "権限がありません"
+    # end
+    @item = Item.find(params[:id])
+    # @image = Image.find(params[:id])
+    @item.image = Image.new if @item.images.blank?
+    count = @item.images.count
+    (PICTURE_COUNT - count).times {@item.images.build}
   end
 
   def update
@@ -117,7 +119,8 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id) 
+    # params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed) #idは仮置きです。
   end
 
 
