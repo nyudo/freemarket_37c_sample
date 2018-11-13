@@ -25,8 +25,8 @@ PICTURE_COUNT = 4
   end
 
   def index
-    @items = Item.where.not(status: :stopped).where.not(status: :received).order("RAND()").limit(4)
-    @ladies_items = Item.where(large_category_id: '1').where(status: :displayed).order("created_at DESC").limit(4)
+    @items = Item.be_indexed.order("RAND()").limit(4)
+    @ladies_items = Item.where(large_category_id: '1').be_indexed.order("created_at DESC").limit(4)
   end
 
   def new
@@ -59,7 +59,7 @@ PICTURE_COUNT = 4
 
   def show
     @images = @item.images.order("created_at DESC")
-    @other_items = Item.where.not(status: :received).where.not(id: @item.id).limit(3)
+    @other_items = Item.be_indexed.where.not(id: @item.id).limit(3)
   end
 
   def edit
@@ -117,7 +117,7 @@ PICTURE_COUNT = 4
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id) #idは仮置きです。
+    params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image, :image_cache, :_destroy, :id]).merge(status: :displayed).merge(user_id: current_user.id)
   end
 
 

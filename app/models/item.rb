@@ -24,4 +24,5 @@ class Item < ApplicationRecord
   enum status: {displayed: 0, shipped: 1, received: 2 ,trading: 3, stopped: 4}
     scope :be_sold, -> { where.not(buyer_id: nil) }
     scope :be_bought, -> (user_id) { where("buyer_id = ?", user_id) }
+    scope :be_indexed, ->{ where.not(status: :stopped).where.not(status: :received) }
 end
