@@ -1,0 +1,54 @@
+.flash_wrapper{
+   font-size:0;
+  .flash_box{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    &--alert{
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      line-height: 20px;
+      font-size: 14px;
+      -webkit-animation: fade-in-out 4s ease 2s forwards;
+      animation: fade-in-out 4s ease 2s forwards;
+    }
+    &--info{
+      color: #31708f;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      line-height: 20px;
+      font-size: 14px;
+      -webkit-animation: fade-in-out 4s ease 2s forwards;
+      animation: fade-in-out 4s ease 2s forwards;
+    }
+    &--notice{
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      line-height: 20px;
+      font-size: 14px;
+      -webkit-animation: fade-in-out 4s ease 2s forwards;
+      animation: fade-in-out 4s ease 2s forwards;
+    }
+    &--warning{
+      color: #8a6d3b;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+      line-height: 20px;
+      font-size: 14px;
+      -webkit-animation: fade-in-out 4s ease 2s forwards;
+      animation: fade-in-out 4s ease 2s forwards;
+    }
+  }
+}
+@-webkit-keyframes fade-in-out {
+  50% {visibility: visible; opacity: 1;}
+  100% {visibility: hidden; opacity: 0;}
+}
+
+@keyframes fade-in-out {
+  50% {visibility: visible; opacity: 1;}
+  100% {visibility: hidden; opacity: 0;}
+}

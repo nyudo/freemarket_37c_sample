@@ -1,11 +1,27 @@
 .single-container
   =render "items/shared/simple_header"
-  = form_for @item do |f|
-    %main.single-main
-      %section.l-single-container
-        = render partial: 'form', locals: {item: @item}
-        .sell-content.sell-btn-box
-          = f.submit "変更する", class: "btn-default btn-red"
-          = link_to 'もどる', :back, class: "btn-default btn-gray"
+  %main.single-main
+    %section.l-single-container
+      = form_for @item do |f|
+        .sell-inner
+          %h2.l-single-head  商品の情報を入力
+          %form.sell-form
+            .sell-upload-box
+              %h3
+                出品画像
+                %span.form-require  必須
+              %p  最大4枚まで再アップロードできます
+              .sell-dropbox
+                .upload-dropbox
+                  .upload-dropbox__text
+                    = f.fields_for :images do |d|
+                      = d.file_field :image, class: "input-default", value: @item.images
+            .infomation-upload
+              .item-form
+                .item-form
+                  .upload-box__text
+                    = render partial: 'form', locals: {item: @item}
+                    .sell-content.sell-btn-box
+                      = f.submit "変更する", class: "btn-default btn-red"
+                      = link_to 'もどる', :back, class: "btn-default btn-gray"
   =render "items/shared/simple_footer"
-
