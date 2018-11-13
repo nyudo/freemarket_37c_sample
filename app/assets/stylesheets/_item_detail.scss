@@ -154,6 +154,16 @@
     line-height: 60px;
    }
   }
+  .item-buy-text{
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 20px;
+    @include tab() {
+    height: 60px;
+    line-height: 60px;
+   }
+  }
   .item-description{
     line-height: 1.5;
     @include tab() {
