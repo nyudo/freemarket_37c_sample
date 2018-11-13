@@ -81,20 +81,24 @@
     / 下記idは仮置きです。右記を使用する予定です。全てcurrent_user.idを使用する予定です。
 
   - if @item.buyer_id == current_user.id && @item.status == "trading"
-    商品がまだ発送されておりません。
-    発送をお待ちください。
+    .item-buy-btn.btn-off.bold
+      商品の発送をお待ちください。
   - elsif @item.buyer_id == current_user.id && @item.status == "shipped"
-    商品が発送されました。
-    商品が到着したら到着確認ボタンを押してください。
+    .item-buy-text.bold
+      商品が発送されました。到着したら確認ボタンを押してください。
     = link_to "到着確認" ,transaction_detail_path,method: :patch,class: "item-buy-btn btn-red bold"
   - elsif @item.buyer_id == current_user.id && @item.status == "received"
-    到着確認を登録しました。取引が終了しました。
+    .item-buy-text.btn-off.bold
+      到着確認を登録しました。取引が終了しました。
   - elsif @item.user_id == current_user.id && @item.status == "shipped"
-    購入者の到着確認をお待ちください。
+    .item-buy-text.btn-off.bold
+      購入者の到着確認をお待ちください。
   - elsif @item.user_id == current_user.id && @item.status == "received"
-    購入者が到着を確認しました。取引が終了しました。
+    .item-buy-text.btn-off.bold
+      購入者が到着を確認しました。取引が終了しました。
   - else
-    商品が購入され支払いされました。商品の発送を行なってください。
+    .item-buy-text.bold
+      商品が購入されました。商品の発送を行なってください。
     = link_to '商品の発送をしたので、発送通知をする',transaction_detail_path,method: :patch , class: "item-buy-btn btn-red bold"
   .item-description
     %p
