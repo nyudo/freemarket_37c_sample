@@ -31,3 +31,11 @@
             %a.user-menue__list__content.link
               = fa_icon 'check', class: 'check-icon'
               .text  やることリスト
+.flash_wrapper
+  .flash_box
+    .flash_box--notice
+      = flash[:notice]
+    .flash_box--alert
+      = flash[:alert]
+    .flash_box--info
+      = flash[:info]
