@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-   before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing, :logout]
+  before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing, :logout]
+  # before_action :set_current_user, only: [:create,:edit,:update]
+
 
   def index
     @item = Item.where(user_id: current_user.id)
@@ -9,18 +11,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @userdetail = @user.user_detail
+    @user = User.find(params[:id])
+    @userdetail = UserDetail.find_by(params[:user_id])
   end
 
   def edit
-    @user = User.find(params[:id])
-    @user.user_detail = UserDetail.new if @user.user_detail.blank?
-    @userdetail = UserDetail.find(params[:id])
+    @userdetail = UserDetail.find_by(params[:user_id])
+    if current_user.id == @userdetail.user_id
+      @user = User.find(params[:id])
+      @user.user_detail = UserDetail.new if @user.user_detail.blank?
+      @userdetail = UserDetail.find_by(params[:user_id])
+    else
+      redirect_to new_user_user_detail_path
+    end
   end
 
   def update
-    @user = User.update(user_params)
+    @user = User.find(params[:id])
+    @user.update(user_params)
     redirect_to users_path
   end
 
