@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post "items/create" => "items/create"
   resources :category, only: [:index,:show]
 
+  resources :blands, only: [:index]
+
   resources :large_category, only: [:show] do
     resources :medium_category, only: [:show] do
       resources :small_category, only: [:show]
