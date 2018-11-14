@@ -22,11 +22,10 @@
                 %li.buy-price-cell
                   %span.data-buy-pay
                   = number_to_currency(@item.price, unit: "¥",precision: 0)
-            - binding.pry
             - if @user_detail.prefecture != blank? && @user_detail.city != blank? && @user_detail.address != blank?
               %p.has-error-text
                 購入にお進みください。
-              %button.btn-default.btn-red.bold
+              %button.btn-default.bold
                 = form_tag action: :payjp, method: :post do
                   %script.payjp-button{"data-key" => PAYJP_PUBLIC_KEY, "data-text" => "購入する", src: "https://checkout.pay.jp/", type: "text/javascript"}
             - else
@@ -55,3 +54,20 @@
             %span 変更する
             = fa_icon 'angle-right', class: "icon-arrow-right"
   = render "items/shared/simple_footer"
+  :css
+    #payjp_checkout_box input[type=button]
+    {
+    -webkit-appearance:none;
+    border-radius:none;
+    display:inline-block;
+    padding:.5em 1em;
+    font-size:12px;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    cursor:pointer;
+    border:none;
+    background-color: white;
+    width: 320px;
+    height: 50px;
+    background-image: linear-gradient(#ea352d 0,#ea352d 48%,#ea352d 100%);
