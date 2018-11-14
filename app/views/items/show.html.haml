@@ -56,11 +56,13 @@
               .item-detail-table-sub-sub-category
                 =fa_icon 'angle-right', class: "icon-arrow-right"
                 = @item.small_category.small_category
-        %tr
-          %th ブランド
+        - if @item.bland_id.present?
           %td
             =link_to blands_path(bland_id: @item.bland_id) do
               = @item.bland.bland
+        -else
+          %td
+            未登録
         %tr
           %th 商品のサイズ
           %td
