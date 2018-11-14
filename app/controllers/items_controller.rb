@@ -66,12 +66,10 @@ PICTURE_COUNT = 4
   end
 
   def edit
-
-    # if @item.user != current_user.id
-    #   redirect_to root_path, notice: "権限がありません"
-    # end
     @item = Item.find(params[:id])
-    # @image = Image.find(params[:id])
+    if @item.user != current_user.id
+      redirect_to root_path, notice: "権限がありません"
+    end
     @item.image = Image.new if @item.images.blank?
     count = @item.images.count
     (PICTURE_COUNT - count).times {@item.images.build}
