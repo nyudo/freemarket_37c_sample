@@ -14,6 +14,7 @@
             .link
               = link_to category_index_path, class: "user-menue__list__content link" do
                 .text カテゴリーから探す
+              = render '/items/shared/dropdown_category'
           %li.item-menue__list
             %a.link ブランドから探す
       %nav.menue-right
