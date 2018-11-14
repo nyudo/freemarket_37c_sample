@@ -110,9 +110,12 @@ PICTURE_COUNT = 4
   end
 
   def buy
-    if user_signed_in?
+    @user_detail = current_user.user_detail
+    if user_signed_in? && @user_detail ==nil
+      redirect_to new_user_user_detail_path(user_id: current_user.id)
+      flash[:warning] = "住所入力をしてください"
+    elsif  user_signed_in?
       @image = @item.images.first
-      @user_detail = current_user.user_detail
     else
       redirect_to new_current_user_session_path
     end
