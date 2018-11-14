@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "users/listing" => "users#listing"
   get "users/logout" => "users#logout"
   resources :users, only: [:index, :edit, :update, :show] do
-      resources :user_details, only: [:new ,:create, :edit, :update]
+      resources :user_details, only: [:new , :create, :edit, :update]
   end
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
