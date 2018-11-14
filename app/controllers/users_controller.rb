@@ -16,14 +16,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @userdetail = UserDetail.find_by(params[:user_id])
-    if current_user.id == @userdetail.user_id
+    # @userdetail = UserDetail.find_by(params[:user_id])
+    # if current_user.id == @userdetail.user_id
       @user = User.find(params[:id])
       @user.user_detail = UserDetail.new if @user.user_detail.blank?
       @userdetail = UserDetail.find_by(params[:user_id])
-    else
-      redirect_to new_user_user_detail_path
-    end
+    # else
+    #   redirect_to new_user_user_detail_path
+    # end
   end
 
   def update
