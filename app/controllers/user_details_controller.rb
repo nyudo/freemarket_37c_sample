@@ -22,6 +22,10 @@ class UserDetailsController < ApplicationController
   def edit
     @user = User.find(current_user.id)
     @userdetail = @user.user_detail
+    if @userdetail.user_id != current_user.id
+      redirect_to root_path, notice: "権限がありません"
+    end
+
     if @userdetail.nil?
       redirect_to new_user_user_detail_path(current_user.id)
     end
