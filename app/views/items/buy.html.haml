@@ -22,19 +22,29 @@
                 %li.buy-price-cell
                   %span.data-buy-pay
                   = number_to_currency(@item.price, unit: "¥",precision: 0)
-            %p.has-error-text 配送先と支払い方法の入力を完了してください。
-            %button.btn-default.btn-red.bold
-              = form_tag action: :payjp, method: :post do
-                %script.payjp-button{"data-key" => PAYJP_PUBLIC_KEY, "data-text" => "購入する", src: "https://checkout.pay.jp/", type: "text/javascript"}
+            - binding.pry
+            - if @user_detail.prefecture != blank? && @user_detail.city != blank? && @user_detail.address != blank?
+              %p.has-error-text
+                購入にお進みください。
+              %button.btn-default.btn-red.bold
+                = form_tag action: :payjp, method: :post do
+                  %script.payjp-button{"data-key" => PAYJP_PUBLIC_KEY, "data-text" => "購入する", src: "https://checkout.pay.jp/", type: "text/javascript"}
+            - else
+              %p.has-error-text 配送先の入力を完了してください。
+              / 配送先と支払い方法の入力を完了してください。
+              %button.btn-default.btn-gray.bold
+                購入する
       %section.buy-item.buy-user-info
         .buy-content-inner
           %h3.bold 配送先
           %address.buy-user-info-text
-            〒150-0043
-            %br 東京都渋谷区 道玄坂2丁目23−12 フォンティスビル7F
-            TECH::EXPERT
-          %a.buy-user-info-fix
-            %span 変更する
+            = "〒#{@user_detail.postal_code}"
+            %br
+              = @user_detail.prefecture
+              = @user_detail.city
+              = @user_detail.address
+          .buy-user-info-fix
+            = link_to "変更する", edit_user_user_detail_path(id: current_user.id, user_id: @user_detail.user_id)
             = fa_icon 'angle-right', class: "icon-arrow-right"
       %section.buy-user-info.buy-item
         .buy-content-inner
