@@ -59,8 +59,8 @@
         %tr
           %th ブランド
           %td
-            %a
-              イーアールジー
+            =link_to blands_path(bland_id: @item.bland_id) do
+              = @item.bland.bland
         %tr
           %th 商品のサイズ
           %td
