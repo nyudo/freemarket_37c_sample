@@ -119,6 +119,14 @@
   border: 1px solid #ea352d;
   color: #fff;
 }
+
+.btn-gray{
+  background-color: gray;
+  border: 1px solid #ea352d;
+  color: $white;
+  opacity: 0.6;
+}
+
 .btn-off{
   background-color: $btn_grey;
   color: #fff;
