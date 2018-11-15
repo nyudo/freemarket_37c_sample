@@ -33,3 +33,24 @@ $tab: 768px;
   margin-top: 8px;
   line-height: 1.5;
 }
+
+@mixin item-btn{
+  color: $white;
+  position: absolute;
+  transform: rotate(-45deg);
+  letter-spacing: 2px;
+  left: 0;
+  z-index: 2;
+}
+
+@mixin item-default-btn{
+display: block;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  border-style: solid;
+  top: 0;
+  left: 0;
+  height:0;
+  width:0;
+}
