@@ -7,6 +7,10 @@
       .owl-carousel
         .owl-slider
           = image_tag @item.images.first.image, size: "300x300"
+          %figcaption
+            - if @item.status == "shipped" || @item.status == "trading"
+              .item-sold-out-badge.bold.sold-badge-item
+                .sold-badge SOLD
         .owl-dots
           .owl-dot
             -@images.each do |image|
