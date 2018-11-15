@@ -12,7 +12,7 @@
           = f.text_field :nickname, class: "name-default", autofocus: true,placeholder: "Ann", value: @user.nickname
         .form
           = f.fields_for :user_detail do |d|
-            = d.text_area :profile, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: @userdetail.profile
+            = d.text_area :profile, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: @user.user_detail.profile
             = d.submit "変更する", class: "update-submit"
   = render partial: 'sidebar', locals: { user: @user }
   = render partial: 'footer_sell_btn'
