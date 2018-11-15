@@ -16,5 +16,8 @@
             %span.bold 0
     .profile_form
       .profile_field
-        = simple_format(@user.user_detail.profile)
+        -if @userdetail.nil?
+          プロフィール情報はありません。
+        -else
+          = simple_format(@user.user_detail.profile)
 = render partial: 'items/shared/footer'
