@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user.user_detail = UserDetail.new if @user.user_detail.blank?
     @userdetail = UserDetail.find_by(params[:user_id])
   end
 
