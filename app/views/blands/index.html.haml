@@ -2,7 +2,7 @@
 %main.item-box-list.clearfix
   .item-content
     %ul.parts-nav.clearfix
-      - @small_category_items.each do |scategory|
+      - @related_small_categories.each do |scategory|
         %li
           %a.l-category-n
             = scategory.small_category
