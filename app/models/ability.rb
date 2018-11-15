@@ -10,7 +10,7 @@ class Ability
     end
 
     if user.item_maneger?
-        can :manage, Item,
+        can :manage, Item
     end
     # Define abilities for the passed in user here. For example:
     #
