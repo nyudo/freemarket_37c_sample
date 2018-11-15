@@ -130,30 +130,33 @@
 }
 
 .sold-badge{
-  color: $white;
-  position: absolute;
-  transform: rotate(-45deg);
-  letter-spacing: 2px;
-  left: 0;
-  z-index: 2;
+  @include item-btn();
   @include tab() {
   font-size: 26px;
-  top: 20px;
+  top: 22px;
  }
 }
 
 .item-sold-out-badge:after{
   border-color: $clean_red transparent transparent transparent;
-  display: block;
-  content: '';
-  position: absolute;
-  z-index: 1;
-  border-style: solid;
-  top: 0;
-  left: 0;
-  height:0;
-  width:0;
+  @include item-default-btn();
   @include tab() {
   border-width: 100px 100px 0 0;
   }
+}
+
+.sold-badge-item:after{
+  border-width: 120px 120px 0 0;
+}
+
+.stop-badge{
+  @include item-btn();
+  @include tab() {
+  font-size: 18px;
+  top: 35px;
+  }
+}
+.stop-badge-item:after{
+  border-color: $btn_grey transparent transparent transparent;
+  border-width: 120px 120px 0 0;
 }
