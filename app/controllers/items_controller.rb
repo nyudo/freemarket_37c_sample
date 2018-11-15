@@ -67,7 +67,7 @@ PICTURE_COUNT = 4
 
   def edit
     @item = Item.find(params[:id])
-    if @item.user != current_user.id
+    if @item.user_id != current_user.id
       redirect_to root_path, notice: "権限がありません"
     end
     @item.image = Image.new if @item.images.blank?

@@ -10,6 +10,11 @@
       .owl-carousel
         .owl-slider
           = image_tag @item.images.first.image, size: "300x300"
+          %figcaption
+            .item-sold-out-badge.bold.sold-badge-item
+              -# .sold-badge SOLD
+            .item-sold-out-badge.bold.stop-badge-item
+              .stop-badge 公開停止中
           -# .owlSet
           -#   .owl-stage-outer slide1
           -#   .owl-stage-outer slide2
@@ -56,13 +61,15 @@
               .item-detail-table-sub-sub-category
                 =fa_icon 'angle-right', class: "icon-arrow-right"
                 = @item.small_category.small_category
-        - if @item.bland_id.present?
-          %td
-            =link_to blands_path(bland_id: @item.bland_id) do
-              = @item.bland.bland
-        -else
-          %td
-            未登録
+        %tr
+          %th ブランド
+          - if @item.bland_id.present?
+            %td
+              =link_to blands_path(bland_id: @item.bland_id) do
+                = @item.bland.bland
+          - else
+            %td
+              未登録
         %tr
           %th 商品のサイズ
           %td

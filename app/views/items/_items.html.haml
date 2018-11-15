@@ -6,7 +6,7 @@
           = image_tag item.images.first.image, size: "213x213"
           - if item.status == "trading" || item.status == "shipped"|| (item.status == "displayed" && item.buyer_id != nil)
             %figcaption
-              .item-sold-out-badge.bold
+              .sold-badge-item.item-sold-out-badge.bold
                 .sold-badge SOLD
       .item-box__text
         %h3.item-box__text__name.font-2
