@@ -60,7 +60,7 @@
             .form-group
               = f.label :bland_id, "ブランド"
               .select-wrap
-                = f.collection_select :bland_id,Bland.all, :id, :bland,{prompt: '該当ブランドあればご選択ください'},required: "", class: "select-default"
+                = f.collection_select :bland_id,Bland.all, :id, :bland,{prompt: '該当ブランドあればご選択ください'}, class: "select-default"
                 = fa_icon 'angle-down', class: 'angle-down-icon'
             .form-group
               = f.label :condition, "商品の状態" do
