@@ -11,10 +11,12 @@
         .owl-slider
           = image_tag @item.images.first.image, size: "300x300"
           %figcaption
-            .item-sold-out-badge.bold.sold-badge-item
-              -# .sold-badge SOLD
-            .item-sold-out-badge.bold.stop-badge-item
-              .stop-badge 公開停止中
+            - if @item.status == "shipped" || @item.status == "trading"
+              .item-sold-out-badge.bold.sold-badge-item
+                .sold-badge SOLD
+            - elsif @item.status == "stopped"
+              .item-sold-out-badge.bold.stop-badge-item
+                .stop-badge 公開停止中
           -# .owlSet
           -#   .owl-stage-outer slide1
           -#   .owl-stage-outer slide2

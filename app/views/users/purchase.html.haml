@@ -25,7 +25,10 @@
                       .mypage-item-box.font-2
                         %i{class: "far fa-heart heart-icon"}
                         %span 10
-                        .btn-blue.sell-btn 配送待ち
+                        - if item.status == "shipped"
+                          .btn-blue.sell-btn 発送済み
+                        - else
+                          .btn-blue.sell-btn 配送待ち
                         %i.fas.fa-angle-right.fa-lg
         - else
           %ul.mypage-item-list
