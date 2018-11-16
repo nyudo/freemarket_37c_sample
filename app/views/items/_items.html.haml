@@ -1,4 +1,4 @@
-- if @items != nil
+- if item.images.present?
   %section.item-box
     =link_to item_path(item.id) do
       %figure.item-box__photo
@@ -19,18 +19,5 @@
             %i{class: "far fa-heart heart-icon"}
             %span 10
           .item-box__text__num__tax  (税込)
-- else
-  %section.item-box
-    %figure.item-box__photo
-      .item-box-image
-      .item-box__text
-        %h3.item-box__text__name.font-2
-          出品された商品はありません
-        .item-box__text__num.clearfix
-          .item-box__text__num__price ￥
-          .item-box__text__num__price
-            = number_to_currency(0, unit: "",precision: 0)
-          .item-box__text__num__likes.font-2
-            %i{class: "far fa-heart heart-icon"}
-            %span 10
-          .item-box__text__num__tax  (税込)
+
+
