@@ -1,3 +1,7 @@
+.flash_wrapper
+  .flash_box
+    .flash_box--warning
+      = flash.now[:warning]
 .single-main
   =render "items/shared/simple_header"
   .l-single-container
@@ -27,11 +31,11 @@
           .form-group
             = f.label :市区町村
             = f.label :必須, class: "required"
-            = f.text_field :address, class: "input-default", placeholder: "例）横浜市緑区"
+            = f.text_field :city, class: "input-default", placeholder: "例）横浜市緑区"
           .form-group
             = f.label :番地
             = f.label :必須, class: "required"
-            = f.text_field :city, class: "input-default", placeholder: "青山 1-1-1"
+            = f.text_field :address, class: "input-default", placeholder: "青山 1-1-1"
           .form-group
             = f.label :建物名
             = f.label :任意, class: "any"

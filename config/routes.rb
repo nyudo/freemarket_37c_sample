@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "users/listing" => "users#listing"
   get "users/logout" => "users#logout"
   resources :users, only: [:index, :edit, :update, :show] do
-      resources :user_details, only: [:new ,:create, :edit, :update]
+      resources :user_details, only: [:new , :create, :edit, :update]
   end
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
   post "items/create" => "items/create"
   resources :category, only: [:index,:show]
+
+  resources :blands, only: [:index]
 
   resources :large_category, only: [:show] do
     resources :medium_category, only: [:show] do

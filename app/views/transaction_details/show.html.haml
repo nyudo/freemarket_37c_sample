@@ -7,6 +7,10 @@
       .owl-carousel
         .owl-slider
           = image_tag @item.images.first.image, size: "300x300"
+          %figcaption
+            - if @item.status == "shipped" || @item.status == "trading" || @item.status == "received"
+              .item-sold-out-badge.bold.sold-badge-item
+                .sold-badge SOLD
         .owl-dots
           .owl-dot
             -@images.each do |image|
@@ -43,9 +47,13 @@
                 = @item.small_category.small_category
         %tr
           %th ブランド
-          %td
-            %a
-              イーアールジー
+          - if @item.bland_id.present?
+            %td
+              =link_to blands_path(bland_id: @item.bland_id) do
+                = @item.bland.bland
+          - else
+            %td
+              未登録
         %tr
           %th 商品のサイズ
           %td
@@ -76,8 +84,6 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-    / 下記idは仮置きです。右記を使用する予定です。全てcurrent_user.idを使用する予定です。
-
   - if @item.buyer_id == current_user.id && @item.status == "trading"
     .item-buy-btn.btn-off.bold
       商品の発送をお待ちください。

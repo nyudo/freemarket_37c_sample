@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-   before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing, :logout]
+  before_action :set_user ,only:[:index,:in_progress,:completed,:purchase,:purchased,:listing, :logout]
+  # before_action :set_current_user, only: [:create,:edit,:update]
+  before_action :create_user_detail ,only:[:edit]
 
   def index
     @item = Item.where(user_id: current_user.id)
@@ -9,18 +11,31 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @userdetail = @user.user_detail
+    # @user.user_detail = UserDetail.new if @user.user_detail.blank?
+    # @userdetail = UserDetail.find_by(params[:user_id])
   end
 
   def edit
     @user = User.find(params[:id])
-    @user.user_detail = UserDetail.new if @user.user_detail.blank?
-    @userdetail = UserDetail.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to root_path, notice: "権限がありません"
+    # @userdetail = UserDetail.find_by(params[:user_id])
+    # if current_user.id == @userdetail.user_id
+    else
+      # @user = User.find(params[:id])
+      @user.user_detail = UserDetail.new if @user.user_detail.blank?
+      @userdetail = UserDetail.find_by(params[:user_id])
+    end
+    # else
+    #   redirect_to new_user_user_detail_path
+    # end
   end
 
   def update
-    @user = User.update(user_params)
+    @user = User.find(params[:id])
+    @user.update(user_params)
     redirect_to users_path
   end
 
@@ -63,6 +78,14 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(id: current_user.id)
+  end
+
+  def create_user_detail
+    @user = User.find(current_user.id)
+    @userdetail = @user.user_detail
+    if @userdetail.nil?
+      redirect_to new_user_user_detail_path(current_user.id)
+    end
   end
 end
 

@@ -1,0 +1,17 @@
+= render partial: 'items/shared/header'
+%main.item-box-list.clearfix
+  .item-content
+    %ul.parts-nav.clearfix
+      - @related_small_categories.each do |scategory|
+        %li
+          %a.l-category-n
+            = scategory.small_category
+    %section.item-box-content.clearfix
+      - if @blands_items.length == 0
+        %h1.items-box-head.clearfix.bold= "その他の#{@bland_name}の商品はありません。"
+      - else
+        %h1.items-box-head.clearfix.bold= "#{@bland_name}の商品一覧"
+      = render partial: '/category/form', collection: @blands_items, as: "item"
+  = render partial: 'users/footer_sell_btn'
+=render "items/shared/footer"
+

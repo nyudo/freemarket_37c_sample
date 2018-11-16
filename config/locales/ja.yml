@@ -1,8 +1,21 @@
 ja:
-  Email: 'メールアドレス'
-  Nickname: 'ニックネーム'
-  password: 'パスワード'
-  password_confirmation: '確認用パスワード'
+  users:
+    Email: 'メールアドレス'
+    Nickname: 'ニックネーム'
+    password: 'パスワード'
+    password_confirmation: '確認用パスワード'
+  user_details:
+    family_name: '苗字'
+    first_name: '名前'
+    kana_family_name: '苗字のフリガナ'
+    kana_first_name: '名前のフリガナ'
+    birthday: '誕生日'
+    prefecture: '都道府県'
+    city: '市区町村'
+    address: '番地'
+    phone_number: '電話番号'
+    postal_code: '郵便番号'
+    profile: '自己紹介'
   activerecord:
     errors:
       messages:

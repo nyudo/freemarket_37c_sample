@@ -1,2 +1,23 @@
-= @user.nickname
-= @userdetail.profile
+= render partial: 'items/shared/header'
+.mypage-container.clearfix
+  %main.p-container
+    %section.user-icon
+      %a
+        %figure
+          %img{alt: "顔写真1", src: "//static-mercari-jp-imgtr2.akamaized.net/images/member_photo_noimage_thumb.png", width: "60"}/
+        %h2.bold
+          = @user.nickname
+        .user-number
+          %div
+            評価
+            %span.bold 0
+          %div
+            出品数
+            %span.bold 0
+    .profile_form
+      .profile_field
+        -if @userdetail.nil?
+          プロフィール情報はありません。
+        -else
+          = simple_format(@user.user_detail.profile)
+= render partial: 'items/shared/footer'

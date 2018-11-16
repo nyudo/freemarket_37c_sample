@@ -66,12 +66,10 @@ PICTURE_COUNT = 4
   end
 
   def edit
-
-    # if @item.user != current_user.id
-    #   redirect_to root_path, notice: "権限がありません"
-    # end
     @item = Item.find(params[:id])
-    # @image = Image.find(params[:id])
+    if @item.user_id != current_user.id
+      redirect_to root_path, notice: "権限がありません"
+    end
     @item.image = Image.new if @item.images.blank?
     count = @item.images.count
     (PICTURE_COUNT - count).times {@item.images.build}
@@ -110,9 +108,13 @@ PICTURE_COUNT = 4
   end
 
   def buy
-    if user_signed_in?
-      @image = @item.images.first
+    if user_signed_in? && current_user.user_detail == nil
       @user_detail = current_user.user_detail
+      redirect_to new_user_user_detail_path(user_id: current_user.id)
+      flash[:warning] = "住所入力をしてください"
+    elsif  user_signed_in?
+      @user_detail = current_user.user_detail
+      @image = @item.images.first
     else
       redirect_to new_current_user_session_path
     end
