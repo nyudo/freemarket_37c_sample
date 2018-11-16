@@ -15,11 +15,4 @@ class User < ApplicationRecord
   has_many :points, dependent: :destroy
 
   validates :nickname, presence: true, length: { maximum:10 }
-  validate :password_confirmation_validates
-end
-
-def password_confirmation_validates
-  if password_confirmation != password
-    errors.add(:password_confirmation, 'パスワード（確認）とパスワードの入力が一致しません。')
-  end
 end

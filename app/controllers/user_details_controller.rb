@@ -6,7 +6,7 @@ class UserDetailsController < ApplicationController
     if user_signed_in?
       @userdetail = UserDetail.new
     else
-      redirect_to root_path
+      redirect_to new_user_user_detail_path
     end
   end
 
@@ -14,8 +14,8 @@ class UserDetailsController < ApplicationController
     @userdetail = UserDetail.new(user_detail_params)
     if @userdetail.save
       redirect_to root_path
-    # else
-    #   redirect_to root_path, alert: '住所登録に失敗しました'
+    else
+      redirect_to new_user_user_detail_path, alert: '住所登録に失敗しました'
     end
   end
 
