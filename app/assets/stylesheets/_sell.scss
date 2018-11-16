@@ -182,17 +182,6 @@
     background-color: #fff;
   }
 
-#fileInput{
-  // display: none;
-}
-
-#output img{
-  display: inline-block;
-  width: 105px;
-  height: 140px;
-  margin: 15px auto;
-}
-
 #dropArea.dragover, #dropArea:active {
   background-color: #9c9;
   background: #cfc;
@@ -210,7 +199,6 @@
   display: inline-block;
   width: 100px;
   margin-right: 5px;
-  // border: 1px solid #eee;
   .img_del {
     font-size:14px;
   }
