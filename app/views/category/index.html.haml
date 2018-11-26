@@ -1,4 +1,8 @@
-= render partial: 'items/shared/header'
+.default-container
+  -if user_signed_in?
+    =render partial: "items/shared/header", locals: {}
+  -else
+    =render partial: "items/shared/header_signup"
 .category-container.clearfix
   %main.c-container
     %section.c-title
